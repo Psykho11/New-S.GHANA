@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Shenmo Ghana</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: white;
+            flex-direction: column;
+        }
+
+        
+        #preloader img {
+            width: 180px; 
+            height: auto;
+        }
+
+        .neon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .neon {
+            font-size: 20px; /* Adjust as needed */
+            font-weight: bold;
+            color: black;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow:
+                0 0 5px rgba(0, 255, 255, 0.7),
+                0 0 10px rgba(0, 255, 255, 0.7),
+                0 0 15px rgba(0, 255, 255, 0.7),
+                0 0 20px rgba(0, 255, 255, 1),
+                0 0 30px rgba(0, 255, 255, 1),
+                0 0 40px rgba(0, 255, 255, 1);
+            animation: neon-flicker 2.5s infinite alternate;
+        }
+
+        @keyframes neon-flicker {
+            0% {
+                text-shadow: 
+                0 0 5px rgba(14, 14, 14, 0.7),
+                    0 0 10px rgba(14, 15, 15, 0.7),
+                    0 0 15px rgba(20, 23, 23, 0.7),
+                    0 0 20px rgb(5, 5, 5),
+                    0 0 30px rgb(2, 2, 2),
+                    0 0 40px rgb(10, 11, 11);
+            }
+            50% {
+                text-shadow: 
+                    0 0 5px rgba(244, 225, 13, 0.627),
+                    0 0 10px rgba(237, 179, 6, 0.456),
+                    0 0 15px rgba(233, 210, 9, 0.46),
+                    0 0 20px rgba(9, 9, 9, 0.8),
+                    0 0 30px rgba(10, 11, 11, 0.8),
+                    0 0 40px rgba(7, 7, 7, 0.8);
+            }
+            100% {
+                text-shadow: 
+                    0 0 5px rgba(14, 14, 14, 0.7),
+                    0 0 10px rgba(14, 15, 15, 0.7),
+                    0 0 15px rgba(20, 23, 23, 0.7),
+                    0 0 20px rgb(5, 5, 5),
+                    0 0 30px rgb(2, 2, 2),
+                    0 0 40px rgb(10, 11, 11);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+       
+        <img src="thumbnails/logo.png" alt="Loading..."> 
+
+       
+        <div class="neon-wrapper">
+            <div class="neon">ShenmoGhana</div>
+        </div>
+    </div>
+
+    <script>
+        
+        setTimeout(function() {
+            window.location.href = "home.html"; 
+        }, 5000); 
+    </script>
+
+</body>
+</html>
+
