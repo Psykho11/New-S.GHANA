@@ -322,23 +322,39 @@ footer {
 
 
 @media screen and (max-width: 768px) {
-    /* Adjusting top navigation for mobile */
-    .top-navigation {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .top-navigation ul {
-        flex-direction: column;
-        gap: 10px;
+    /* General Styles */
+    body {
+        padding: 0;
+        font-size: 14px;
     }
 
-    /* Main Navigation */
+    /* ✅ Top Navigation - Centering for Mobile */
+    .top-navigation {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    .top-navigation ul {
+        flex-direction: column;
+        gap: 8px;
+        padding: 0;
+    }
+
+    .top-navigation ul li {
+        display: block;
+        width: 100%;
+    }
+
+    /* ✅ Main Navigation - Stacking Logo and Menu */
     .main-navigation {
         flex-direction: column;
-        padding: 10px;
         text-align: center;
+        padding: 15px;
     }
 
     .logo-container {
@@ -346,32 +362,51 @@ footer {
         align-items: center;
     }
 
+    .logo-container img {
+        height: 35px;
+        margin-bottom: 5px;
+    }
+
     .main-navigation ul {
         flex-direction: column;
         gap: 10px;
     }
 
-    /* Hero Section */
+    /* ✅ Hero Section - Adjusting Image and Text */
     .hero {
-        height: 400px; /* Reduce height for mobile */
+        height: 350px;
         font-size: 18px;
     }
 
     .hero-content {
-        font-size: 20px;
-        padding: 15px;
+        font-size: 18px;
+        padding: 10px;
+        text-align: center;
     }
 
-    /* News and Events Section */
+    /* ✅ Slideshow - Adjusting for Mobile */
+    .slide {
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* ✅ News and Events - Better Stacking */
     .news-container {
         flex-direction: column;
+        gap: 15px;
     }
 
     .main-news img {
+        width: 100%;
         height: auto;
     }
 
-    /* Testimonial Section */
+    /* ✅ Testimonial Section - Fixing Layout */
+    .testimonial-container {
+        padding: 10px;
+    }
+
     .testimonial {
         flex-direction: column;
         height: auto;
@@ -379,16 +414,17 @@ footer {
     }
 
     .parent-image {
-        width: 50%;
-        height: auto;
-        margin: 0 auto;
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 10px;
+        border-radius: 50%;
     }
 
     .testimonial-text p {
-        font-size: 18px;
+        font-size: 16px;
     }
 
-    /* Footer */
+    /* ✅ Footer - Responsive and Readable */
     .footer-container {
         flex-direction: column;
         text-align: center;
@@ -396,14 +432,21 @@ footer {
 
     .footer-links, .footer-contact, .footer-social {
         min-width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
     .footer-logo img {
-        height: 100px;
+        height: 80px;
     }
 
     .footer-social a {
         font-size: 18px;
+    }
+
+    /* ✅ Buttons & Navigation - Touch Friendly */
+    .nav-button {
+        padding: 12px;
+        font-size: 16px;
+        width: 40px;
     }
 }
