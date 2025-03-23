@@ -39,13 +39,83 @@ header {
 }
 
 /* Maintain existing styles for main-navigation */
+
+
+/* Header Styling */
 .main-navigation {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    background-color: #eff1f3;
+    align-items: center;
     padding: 10px 20px;
+    background: #fff;
+    position: relative;
 }
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container img {
+    width: 50px;
+    height: auto;
+}
+
+.site-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Hamburger Icon */
+.menu-toggle {
+    font-size: 30px;
+    cursor: pointer;
+    display: block;
+    z-index: 1001;
+    color: #000;
+}
+
+/* Navigation Menu */
+.nav-links {
+    list-style: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 200px;
+    height: 80vh;
+    background: #f6f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.nav-links li {
+    margin: 20px 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Show menu when active */
+.nav-links.show {
+    right: 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        width: 200px;
+    }
+}
+
 
 .logo-container {
     display: flex;

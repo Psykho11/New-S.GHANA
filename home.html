@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/pages.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
 
 
 </head>
@@ -15,14 +15,14 @@
     <header>
         <div class="top-navigation">
             <div class="brand">SHENMO EDUCATION</div>
-            
         </div>
         <nav class="main-navigation">
             <div class="logo-container">
-                <img src="thumbnails/logo.png" alt="">
+                <img src="thumbnails/logo.png" alt="Logo">
                 <span class="site-name">SHENMO GHANA</span>
             </div>
-            <ul>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="registration.html">Registration</a></li>
@@ -32,8 +32,8 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-        
     </header>
+    
     
     <main>
         <section class="hero">
@@ -175,6 +175,7 @@
 
     <script src="javascript/script.js"></script>
     <script src="javascript/slides.js"></script>
+    <script src="javascript/menu.js"></script>
     
     
     
