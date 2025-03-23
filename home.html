@@ -6,20 +6,17 @@
     <title>ShenmoGhana</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/form.css">
+    <link rel="stylesheet" href="styles/pages.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
 
 </head>
 <body>
     <header>
         <div class="top-navigation">
             <div class="brand">SHENMO EDUCATION</div>
-            <ul>
-                <li><a href="#">Faculty</a></li>
-                <li><a href="#">Staff</a></li>
-                <li><a href="#">Students</a></li>
-                <li><a href="#">Alumni</a></li>
-                <li><a href="#">Give To UGSoL</a></li>
-            </ul>
+            
         </div>
         <nav class="main-navigation">
             <div class="logo-container">
@@ -27,8 +24,9 @@
                 <span class="site-name">SHENMO GHANA</span>
             </div>
             <ul>
+                <li><a href="home.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="admission.html">Admissions</a></li>
+                <li><a href="registration.html">Registration</a></li>
                 <li><a href="program.html">Programs</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="research.html">Research</a></li>
@@ -40,10 +38,10 @@
     
     <main>
         <section class="hero">
-            <div class="slideshow">
-                <div class="slide slide1"></div>
-                <div class="slide slide2"></div>
-                <div class="slide slide3"></div>
+            <div class="slideshows">
+                <div class="slides slides1"></div>
+                <div class="slides slides2"></div>
+                <div class="slides slides3"></div>
             </div>
             <div class="hero-content">
                 <h1>WELCOME TO SHENMO GHANA</h1>
@@ -60,107 +58,75 @@
                     <img src="images/WhatsApp Image 2025-02-19 at 19.25.56_5ec9d286.jpg" alt="Main News Image">
                     <h3>Shenmo Ghana Competition</h3>
                     <p>April 5, 2025</p>
-                    <p>Dear Students and Parents. We are excited to announce and invite all and sundry to the first Shenmo Abacus Mental Math Open day and Competition in Kumasi, taking place on the 5th of April, 2025 at Africa Hall,Knust,Ksi....</p>
+                    <p>Dear Students and Parents. We are excited to announce and invite all and sundry to the first Shenmo Abacus Mental Math Open day and Competition in Kumasi...</p>
                 </div>
         
                 <!-- More News (Right Side) -->
                 <div class="more-news">
-                    <h3>More News</h3>
-                    <ul>
-                        <li><a href="https://www.instagram.com/shenmoghana/p/DGQZ6AkOj_U/">Shenmo Ghana Competition(Kumasi) - April 5, 2025</a></li>
-                        <li><a href="https://www.instagram.com/p/DG2_assi57G/?igsh=NzB4NDlidmIxNnc=">Happy Independence Day Ghana - March 6, 2025</a></li>
-                        <li><a href="https://www.instagram.com/shenmoghana/reel/DFIVcIPpU-R/">Shenmo School Awards - January 16, 2025</a></li>
-                        <li><a href="https://web.facebook.com/hashtag/shenmoghana?__eep__=6&__cft__[0]=AZWft7YjPtxYhoPov0-ATMQ7gQ4eaIMLcJp1vgPNRSEljcOTGOP-_OLesgWN7bwd9GfsYrHFwzoNNzrcK243GPVGGX8MWV56uHSWPZ_HnVrosCmHZUrl-Uke1zr0FQdhNOmnnnX-t9CLED_SJAcYaIhuD_nO-2AUraxiRG2vhZYOXIOWQ6hzVPx9mFpHz0-JWbw&__tn__=*NK-R">Shenmo Office - October 24, 2024</a></li>
-                    </ul>
+                    <!-- First News Box -->
+                    <div class="first-news">
+                        <a href="https://www.instagram.com/shenmoghana/p/DGQZ6AkOj_U/">
+                            Shenmo Ghana Competition (Kumasi) - April 5, 2025
+                        </a>
+                    </div>
+        
+                    <!-- Other News Items in Separate Boxes -->
+                    <div class="news-item">
+                        <a href="https://www.instagram.com/p/DG2_assi57G/?igsh=NzB4NDlidmIxNnc=">
+                            Happy Independence Day Ghana - March 6, 2025
+                        </a>
+                    </div>
+        
+                    <div class="news-item">
+                        <a href="https://www.instagram.com/shenmoghana/reel/DFIVcIPpU-R/">
+                            Shenmo School Awards - January 16, 2025
+                        </a>
+                    </div>
+        
+                    <div class="news-item">
+                        <a href="https://web.facebook.com/hashtag/shenmoghana">
+                            Shenmo Office - October 24, 2024
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
         
+        
 
 
-        <div class="testimonial-container">
-            <div class="testimonial-slide" id="testimonialSlide">
-                <div class="testimonial">
-                    <div class="parent-image">
-                        <img src="images/WhatsApp Image 2025-02-24 at 18.02.13_e10fcea7.jpg" alt="Parent Image">
-                    </div>
-                    <div class="testimonial-text">
-                        <h3>Mr Rashid</h3>
-                        <p>"The abacus program has greatly improved my child's math skills and confidence! I highly recommend it."</p>
-                    </div>
+        <div class="testimonial-slideshow">
+            <div class="testimonial-container">
+             
+                <div class="testimonial-slide">
+                    <img src="images/IMG-20250108-WA0022.jpg" alt="Client 1">
+                    <p class="testimonial-comment">"The Abacus Mental Math Program has greatly improved my child's ability to perform quick mental calculations. It's fun and interactive, which keeps him engaged!"</p>
+                    <p class="testimonial-name">- Mr. Rashid</p>
                 </div>
-                <div class="testimonial">
-                    <div class="parent-image">
-                        <img src="images/WhatsApp Image 2024-10-26 at 08.15.33_0794608f.jpg" alt="Parent Image">
-                    </div>
-                    <div class="testimonial-text">
-                        <h3>Mrs Lordina</h3>
-                        <p>"I am amazed at how fast my child can calculate mentally now. This program is fantastic!"</p>
-                    </div>
+      
+               
+                <div class="testimonial-slide">
+                    <img src="images/IMG-20250108-WA0026.jpg" alt="Client 2">
+                    <p class="testimonial-comment">"As a parent, I've seen a huge improvement in my childrens' math skills since enrolling them into the Abacus Mental Math Program. Their speed and accuracy have noticeably increased."</p>
+                    <p class="testimonial-name">- Mr. Mubarak</p>
                 </div>
-            </div>
-            <div class="navigation">
-                <button class="nav-button" onclick="prevSlide()">&#10094;</button>
-                <button class="nav-button" onclick="nextSlide()">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="container">
-            <h1>Contact Us</h1>
-            
-            <div class="forms">
-                <!-- Volunteer Form Button -->
-                <button id="volunteerBtn">Join Our Team</button>
-                
-                <!-- Volunteer Form (Initially hidden) -->
-                <div id="volunteerForm" class="form-container">
-                    <h2>Volunteer Registration</h2>
-                    <form action="volunteer-form.php" method="POST">
-                        <label for="volName">Name:</label>
-                        <input type="text" id="volName" name="name" required>
-                        
-                        <label for="volEmail">Email:</label>
-                        <input type="email" id="volEmail" name="email" required>
-                        
-                        <label for="volPhone">Phone Number:</label>
-                        <input type="text" id="volPhone" name="phone" required>
-                        
-                        <label for="volMessage">Message:</label>
-                        <textarea id="volMessage" name="message" required></textarea>
-                        
-                        <button type="submit">Submit</button>
-                    </form>
+      
+               
+                <div class="testimonial-slide">
+                    <img src="images/IMG-20250108-WA0024.jpg" alt="Client 3">
+                    <p class="testimonial-comment">"My daughter was struggling with math before enrolling in the Abacus program. Now, she completes math problems with confidence and accuracy. Highly recommend!"</p>
+                    <p class="testimonial-name">- Mr. Rahman</p>
                 </div>
-    
-                <!-- Contact Message Form -->
-                <div class="contact-form">
-                    <h2>Send Us A Message</h2>
-                    <form action="contact-form.php" method="POST">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
-                        
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        
-                        <label for="subject">Subject:</label>
-                        <input type="text" id="subject" name="subject" required>
-                        
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" required></textarea>
-                        
-                        <button type="submit">Send Message</button>
-                    </form>
-                </div>
+      
+                <div class="testimonial-slide">
+                  <img src="images/IMG_2109.jpg" alt="Client 3">
+                  <p class="testimonial-comment">"My daughter was struggling with math before enrolling in the Abacus program. Now, she completes math problems with confidence and accuracy. Highly recommend!"</p>
+                  <p class="testimonial-name">- Hajia Saada</p>
+              </div>
             </div>
         </div>
-    
-        <script>
-            // Toggle the volunteer form visibility
-            document.getElementById("volunteerBtn").addEventListener("click", function() {
-                var form = document.getElementById("volunteerForm");
-                form.style.display = form.style.display === "none" || form.style.display === "" ? "block" : "none";
-            });
-        </script>    
+        
+  
     </main>
     <footer>
         <div class="footer-container">
@@ -175,8 +141,8 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="about.html">About Us</a></li>
+                    <li><a href="registration.html">Registration</a></li>
                     <li><a href="program.html">Programs</a></li>
-                    <li><a href="admission.html">Admissions</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -209,6 +175,9 @@
     </footer>
 
     <script src="javascript/script.js"></script>
+    <script src="javascript/slides.js"></script>
+    <script src="javascript/email.js"></script>
+    
     
     
 </body>

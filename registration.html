@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles/form.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<body>
+
+    <header>
+        <div class="top-navigation">
+            <div class="brand">SHENMO EDUCATION</div>
+            
+        </div>
+        <nav class="main-navigation">
+            <div class="logo-container">
+                <img src="thumbnails/logo.png" alt="">
+                <span class="site-name">SHENMO GHANA</span>
+            </div>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="program.html">Programs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+
+    
+        <h1>Contact Us</h1>
+    
+        <div class="form-container">
+            <!-- Volunteer Registration Section -->
+            <div class="form-box">
+                <h2>Join Our Team</h2>
+                <button id="volunteerBtn" class="toggle-btn">Become a Volunteer</button>
+        
+                <div id="volunteerForm" class="hidden">
+                    <form id="volunteerFormEl">
+                        <label for="volName">Full Name</label>
+                        <input type="text" id="volName" name="name" placeholder="Enter your full name" required>
+        
+                        <label for="volEmail">Email Address</label>
+                        <input type="email" id="volEmail" name="email" placeholder="Enter your email" required>
+        
+                        <label for="volPhone">Phone Number</label>
+                        <input type="tel" id="volPhone" name="phone" placeholder="Enter your phone number" required>
+        
+                        <label for="volMessage">Why do you want to volunteer?</label>
+                        <textarea id="volMessage" name="message" placeholder="Tell us why..." required></textarea>
+        
+                        <button type="submit" class="submit-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        
+            <!-- Contact Form Section -->
+            <div class="form-box">
+                <h2>Send Us a Message</h2>
+                <form id="contactFormEl">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+        
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+        
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                <p>Open a PDF file <a href="document/Agreement_Shenmo Abacus Mental Math 2024.pdf">Terms and Conditions</a>.</p>
+                
+            </div>
+        </div>
+        
+        <script>
+            // Toggle Volunteer Form
+            document.getElementById("volunteerBtn").addEventListener("click", function () {
+                let form = document.getElementById("volunteerForm");
+                form.classList.toggle("hidden");
+            });
+        
+            // Handle Volunteer Form Submission
+            document.getElementById("volunteerFormEl").addEventListener("submit", function (event) {
+                event.preventDefault();
+                
+                // Collect Form Data
+                let name = document.getElementById("volName").value;
+                let email = document.getElementById("volEmail").value;
+                let phone = document.getElementById("volPhone").value;
+                let message = document.getElementById("volMessage").value;
+        
+                // Open Email Client
+                window.location.href = `mailto:shenmoghana@gmail.com?subject=Volunteer Application&body=Name: ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0AMessage: ${message}`;
+            });
+        
+            // Handle Contact Form Submission
+            document.getElementById("contactFormEl").addEventListener("submit", function (event) {
+                event.preventDefault();
+                
+                // Collect Form Data
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value;
+                let subject = document.getElementById("subject").value;
+                let message = document.getElementById("message").value;
+        
+                // Open Email Client
+                window.location.href = `mailto:shenmoghana@gmail.com?subject=${encodeURIComponent(subject)}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
+            });
+        </script>
+        
+    
+
+    
+    
+
+<footer>
+    <div class="footer-container">
+        <!-- Logo and About -->
+        <div class="footer-logo">
+            <img src="thumbnails/images.png" alt="">
+            <p>Empowering minds through education and innovation.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="program.html">Programs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Ahobrase Plaza, East Legon, Accra, Ghana</p>
+            <p><i class="fas fa-phone"></i> 0500926000 | 0249460223</p>
+            <p><i class="fas fa-envelope"></i>shenmoghana@gmail.com</a></p>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <a href="https://web.facebook.com/shenmoghana/?_rdc=1&_rdr" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@shenmoghana?app=desktop" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/shenmoghana/" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/552595297" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="footer-bottom">
+        <p>&copy; 2025 Shenmo Ghana. All rights reserved.</p>
+    </div>
+</footer>
+
+
+
+
+</body>
+</html>
