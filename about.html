@@ -92,47 +92,69 @@
          </div>
 
 
-        <div class="all-pics"> SHENMO VIDEOS</div>
-        <div class="video-container">
-            <video id="myVideo" width="300" controls preload="auto">
-              <source src="videos/WhatsApp Video 2024-10-05 at 18.59.13_f82b3aa3.mp4" type="video/mp4">
-              <source src="videos/WhatsApp Video 2024-10-13 at 16.02.20_d2bab2c4.mp4" type="video/mp4">
-              <source src="videos/WhatsApp Video 2024-10-13 at 16.03.40_0d4de7d5.mp4" type="video/mp4">
-            </video>
-            <video id="myVideo" width="300" controls preload="auto">
-                <source src="videos/WhatsApp Video 2024-11-23 at 07.53.03_159d3f8d.mp4" type="video/mp4">
-            </video>
-            <video id="myVideo" width="300" controls preload="auto">
-                <source src="videos/WhatsApp Video 2024-11-23 at 07.57.00_b1bb8e9b.mp4" type="video/mp4">
-            </video>
-            <video id="myVideo" width="300" controls preload="auto">
-                <source src="videos/WhatsApp Video 2024-12-07 at 08.03.21_cf1cd5d9.mp4" type="video/mp4">
-            </video>
-            <video id="myVideo" width="300" controls preload="auto">
-                <source src="videos/WhatsApp Video 2024-12-07 at 08.03.27_df63c7a7.mp4" type="video/mp4">
-            </video>
-            
-             
+         <div class="puzzle-section">
+            <h2>Can You Solve the Puzzle?</h2>
+            <p>Rearrange the tiles to complete the picture!</p>
+            <div class="puzzle-container">
+                <div class="puzzle-grid" id="puzzle"></div>
+                <button class="shuffle-button" onclick="shuffleTiles()">Shuffle</button>
+            </div>
         </div>
 
 
         <script>
-            const video = document.getElementById('myVideo');
-            const muteButton = document.getElementById('muteButton');
-            const unmuteButton = document.getElementById('unmuteButton');
-            const volumeControl = document.getElementById('volumeControl');
-    
-            muteButton.addEventListener('click', () => {
-                video.muted = true;
-            });
-    
-            unmuteButton.addEventListener('click', () => {
-                video.muted = false;
-            });
-    
-            volumeControl.addEventListener('input', (event) => {
-                video.volume = event.target.value;
-            });
+            const puzzleSize = 3; // 3x3 puzzle
+            let tiles = [];
+            
+            function createPuzzle() {
+                const puzzleContainer = document.getElementById("puzzle");
+                puzzleContainer.innerHTML = "";
+                tiles = [];
+        
+                for (let i = 0; i < puzzleSize * puzzleSize; i++) {
+                    let tile = document.createElement("div");
+                    tile.classList.add("puzzle-tile");
+                    tile.textContent = i + 1;
+                    tile.dataset.index = i;
+                    tile.addEventListener("click", moveTile);
+                    tiles.push(tile);
+                    puzzleContainer.appendChild(tile);
+                }
+                
+                tiles[tiles.length - 1].style.visibility = "hidden"; // Hide last tile
+            }
+        
+            function shuffleTiles() {
+                let shuffled = tiles.sort(() => Math.random() - 0.5);
+                const puzzleContainer = document.getElementById("puzzle");
+                puzzleContainer.innerHTML = "";
+                shuffled.forEach(tile => puzzleContainer.appendChild(tile));
+            }
+        
+            function moveTile(event) {
+                let tile = event.target;
+                let emptyTile = tiles.find(t => t.style.visibility === "hidden");
+        
+                let tileIndex = Array.from(tile.parentNode.children).indexOf(tile);
+                let emptyIndex = Array.from(emptyTile.parentNode.children).indexOf(emptyTile);
+        
+                let validMoves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - puzzleSize, emptyIndex + puzzleSize];
+                if (validMoves.includes(tileIndex)) {
+                    [emptyTile.textContent, tile.textContent] = [tile.textContent, emptyTile.textContent];
+                    emptyTile.style.visibility = "visible";
+                    tile.style.visibility = "hidden";
+                }
+        
+                checkWin();
+            }
+        
+            function checkWin() {
+                let correct = tiles.every((tile, index) => tile.textContent == index + 1 || tile.style.visibility === "hidden");
+                if (correct) alert("🎉 Congratulations! You solved the puzzle!");
+            }
+        
+            createPuzzle();
+            shuffleTiles();
         </script>
 
 <footer>
