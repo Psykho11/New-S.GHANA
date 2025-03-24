@@ -202,10 +202,12 @@ header {
     border-radius: 10px;
     font-size: 26px;
 }
+
+
 /* General News Section Styling */
 .news-events {
     width: 100%;
-    padding: 50px 20px;
+    padding: 10px 5px;
     background-color: #f8f9fa;
     text-align: center;
 }
@@ -221,8 +223,8 @@ header {
 .news-container {
     display: flex;
     gap: 20px;
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1500px;
     margin: 0 auto;
     align-items: stretch; /* Ensure both sections have equal height */
 }
@@ -260,7 +262,7 @@ header {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Space between news items */
+    gap: 25px; /* Space between news items */
 }
 
 /* First News Box */
@@ -472,6 +474,7 @@ footer {
 .footer-logo img {
     height: 200px;
     margin-bottom: 10px;
+    margin-left: 25px;
 }
 
 .footer-links, .footer-contact, .footer-social {
