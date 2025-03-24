@@ -224,7 +224,7 @@ header {
     display: flex;
     gap: 20px;
     width: 100%;
-    max-width: 1500px;
+    max-width: 100%;
     margin: 0 auto;
     align-items: stretch; /* Ensure both sections have equal height */
 }
@@ -317,7 +317,7 @@ header {
     flex-direction: column;
     align-items: left;
     justify-content: left;
-    padding: 50px 20px;
+  
 }
 
 /* Style for the Volunteer Section */
@@ -331,7 +331,7 @@ header {
     width: 100%;
     max-width: 100%;
     background: white;
-    padding: 10px;
+    padding: 5px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: left;
