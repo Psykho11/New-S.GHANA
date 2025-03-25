@@ -14,9 +14,29 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #003366;
+    background: #003366; /* Red background */
+    padding: 10px 20px;
     color: white;
+    font-size: 18px;
+}
+
+
+.donate-button {
+    background: white;
+    color: #d9534f;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.donate-button:hover {
+    background: #f8f9fa;
+    color: #c9302c;
 }
 
 .brand {

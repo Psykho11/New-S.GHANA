@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShenmoGhana</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="top-navigation">
+            <div class="brand">SHENMO GHANA</div>
+            <a href="donation.html" class="donate-button">Donate</a>
+        </div>
+        <nav class="main-navigation">
+            <div class="logo-container">
+                <img src="thumbnails/logo.png" alt="Logo">
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="program.html">Programs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="donation-container">
+    <h2>Support Shenmo Ghana</h2>
+    <p>Your donation helps us provide quality education and resources for children. Every contribution makes a difference!</p>
+
+    <div class="donation-buttons">
+        <button class="donate-btn small" onclick="selectAmount(5)">Donate $5</button>
+        <button class="donate-btn medium" onclick="selectAmount(10)">Donate $10</button>
+        <button class="donate-btn large" onclick="selectAmount(20)">Donate $20</button>
+        <button class="donate-btn custom" onclick="customDonation()">Other Amount</button>
+    </div>
+
+    <input type="number" id="custom-amount" placeholder="Enter custom amount" class="hidden">
+    <button class="donate-btn confirm" onclick="showDonationMethods()">Confirm Donation</button>
+
+    <!-- Tab Menu for Mobile Money and Bank Transfer -->
+    <div class="donation-methods" id="donation-methods">
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('momo')">📱 Mobile Money</button>
+            <button class="tab-button" onclick="switchTab('bank')">🏦 Bank Transfer</button>
+        </div>
+
+        <!-- Mobile Money Section -->
+        <div class="donation-section" id="momo-section">
+            <h3>📱 Donate via Mobile Money</h3>
+            <p><strong>MTN MoMo:</strong></p>
+            <ol>
+                <li>Dial <strong>*170#</strong></li>
+                <li>Select **Option 1 (Transfer Money)**</li>
+                <li>Choose **Option 2 (Momo User)**</li>
+                <li>Enter Number: <strong>0249460223</strong></li>
+                <li>Enter Amount & Confirm</li>
+            </ol>
+
+            <p><strong>Vodafone Cash:</strong></p>
+            <ol>
+                <li>Dial <strong>*110#</strong></li>
+                <li>Select **Option 1 (Send Money)**</li>
+                <li>Enter Number: <strong>0500926000</strong></li>
+                <li>Enter Amount & Confirm</li>
+            </ol>
+
+            <p><strong>AirtelTigo Money:</strong></p>
+            <ol>
+                <li>Dial <strong>*110#</strong></li>
+                <li>Select **Option 1 (Send Money)**</li>
+                <li>Enter Number: <strong>0500926000</strong></li>
+                <li>Enter Amount & Confirm</li>
+            </ol>
+        </div>
+
+        <!-- Bank Transfer Section -->
+        <div class="donation-section hidden" id="bank-section">
+            <h3>🏦 Donate via Bank Transfer</h3>
+            <p><strong>Bank Name:</strong> Ghana Commercial Bank (GCB)</p>
+            <p><strong>Account Name:</strong> Shenmo Ghana</p>
+            <p><strong>Account Number:</strong> 1234567890123</p>
+            <p><strong>Branch:</strong> East Legon, Accra</p>
+            <p>Kindly include "Donation - Your Name" as the reference when making the transfer.</p>
+        </div>
+
+        <p class="thank-you-message hidden">Thank you for your support! ❤️</p>
+    </div>
+</div>
+
+<style>
+    .donation-container {
+        background: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 500px;
+        margin: 20px auto;
+    }
+
+    .donation-container h2 {
+        color: #d9534f;
+        margin-bottom: 10px;
+    }
+
+    .donation-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .donate-btn {
+        background: #d9534f;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        font-size: 14px;
+    }
+
+    .donate-btn:hover {
+        background: #c9302c;
+    }
+
+    .donate-btn.custom {
+        background: #5bc0de;
+    }
+
+    .donate-btn.custom:hover {
+        background: #31b0d5;
+    }
+
+    .donate-btn.confirm {
+        background: #5cb85c;
+        margin-top: 10px;
+    }
+
+    .donate-btn.confirm:hover {
+        background: #4cae4c;
+    }
+
+    #custom-amount {
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .donation-methods {
+        display: none;
+        margin-top: 20px;
+        text-align: left;
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .tabs {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 10px;
+    }
+
+    .tab-button {
+        background: #d9534f;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        font-size: 14px;
+    }
+
+    .tab-button.active {
+        background: #5cb85c;
+    }
+
+    /* Removed empty ruleset for .donation-section */
+
+    .hidden {
+        display: none;
+    }
+
+    .donation-section h3 {
+        color: #d9534f;
+    }
+
+    .donation-section ol {
+        padding-left: 20px;
+    }
+
+    .thank-you-message {
+        color: green;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    function selectAmount(amount) {
+        document.getElementById('custom-amount').style.display = 'none';
+        document.getElementById('custom-amount').value = amount;
+    }
+
+    function customDonation() {
+        document.getElementById('custom-amount').style.display = 'block';
+        document.getElementById('custom-amount').focus();
+    }
+
+    function showDonationMethods() {
+        document.getElementById('donation-methods').style.display = 'block';
+        document.getElementById('momo-section').style.display = 'block';
+        document.getElementById('bank-section').style.display = 'none';
+        document.querySelector('.thank-you-message').style.display = 'block';
+    }
+
+    function switchTab(method) {
+        if (method === 'momo') {
+            document.getElementById('momo-section').style.display = 'block';
+            document.getElementById('bank-section').style.display = 'none';
+        } else {
+            document.getElementById('momo-section').style.display = 'none';
+            document.getElementById('bank-section').style.display = 'block';
+        }
+
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+</script>
+
+<footer>
+    <div class="footer-container">
+        <!-- Logo and About -->
+        <div class="footer-logo">
+            <img src="thumbnails/images.png" alt="">
+            <p>Empowering minds through education and innovation.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="program.html">Programs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Ahobrase Plaza, East Legon, Accra, Ghana</p>
+            <p><i class="fas fa-phone"></i> 0500926000 | 0249460223</p>
+            <p><i class="fas fa-envelope"></i>shenmoghana@gmail.com</a></p>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <a href="https://web.facebook.com/shenmoghana/?_rdc=1&_rdr" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@shenmoghana?app=desktop" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/shenmoghana/" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/552595297" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="footer-bottom">
+        <p>&copy; 2025 Shenmo Ghana. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="javascript/menu.js"></script>
