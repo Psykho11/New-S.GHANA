@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Abacus Quiz</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .error-msg {
+      margin-top: 15px;
+      color: red;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login to Abacus Quiz</h2>
+    <form id="login-form">
+      <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required placeholder="e.g. user@example.com" />
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" required placeholder="Enter your password" />
+      </div>
+      <div class="input-group">
+        <label for="school">School:</label>
+        <input type="text" id="school" required placeholder="Enter your school name" />
+      </div>
+      <div class="input-group">
+        <label for="level">Level:</label>
+        <select id="level" required>
+          <option value="">-- Select Level --</option>
+          <option value="Level 1">Level 1</option>
+          <option value="Level 2">Level 2</option>
+          <option value="Level 3">Level 3</option>
+          <option value="Level 4">Level 4</option>
+        </select>
+      </div>
+      <button type="submit">Login</button>
+      <div class="error-msg" id="error-msg"></div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const school = document.getElementById("school").value.trim();
+      const level = document.getElementById("level").value;
+      const errorMsg = document.getElementById("error-msg");
+
+      const emailRegex = /^[^@]+@[^@]+\.[^@]+$/;
+
+      if (!emailRegex.test(email)) {
+        errorMsg.textContent = "Please enter a valid email address.";
+        return;
+      }
+
+      if (password.length < 6) {
+        errorMsg.textContent = "Password must be at least 6 characters.";
+        return;
+      }
+
+      if (!school) {
+        errorMsg.textContent = "Please enter your school name.";
+        return;
+      }
+
+      if (!level) {
+        errorMsg.textContent = "Please select your level.";
+        return;
+      }
+
+      // Save user data to localStorage
+      localStorage.setItem("user_logged_in", true);
+      localStorage.setItem("user_email", email);
+      localStorage.setItem("user_school", school);
+      localStorage.setItem("user_level", level);
+
+      // Redirect to dashboard
+      window.location.href = "dashboard.html";
+    });
+  </script>
+</body>
+</html>
