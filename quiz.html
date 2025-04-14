@@ -111,50 +111,60 @@
     }
 
     .keypad {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 30px auto;
-    max-width: 280px;
-    width: 100%;
-  }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 30px auto;
+      max-width: 280px;
+      width: 100%;
+    }
 
-  .keypad-row {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-
-  .keypad-row button {
-    flex: 1;
-    margin: 0 5px;
-    padding: 15px 0;
-    font-size: 18px;
-    background-color: #388e3c;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  .keypad-row button:hover {
-    background-color: #2e7d32;
-  }
-
-  /* Mobile optimization */
-  @media (max-width: 600px) {
-    .keypad {
-      padding: 0 10px;
+    .keypad-row {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 10px;
     }
 
     .keypad-row button {
-      padding: 12px 0;
-      font-size: 16px;
-      margin: 0 3px;
+      flex: 1;
+      margin: 0 5px;
+      padding: 15px 0;
+      font-size: 18px;
+      background-color: #388e3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
     }
-  }
+
+    .keypad-row button:hover {
+      background-color: #2e7d32;
+    }
+
+    /* Mobile optimization */
+    @media (max-width: 600px) {
+      /* Show the input on mobile and enable typing */
+      #user-answer {
+        display: block;
+      }
+
+      .keypad {
+        display: block;
+      }
+    }
+
+    /* For larger screens (laptops), show the physical input and keypad */
+    @media (min-width: 601px) {
+      #user-answer {
+        display: block;
+      }
+
+      .keypad {
+        display: none;
+      }
+    }
 
     footer {
       background: #003366;
@@ -215,34 +225,33 @@
 
       <form id="answer-form" class="input-group">
         <label for="user-answer">Your Answer:</label>
-        <input type="text" id="user-answer" readonly />
+        <input type="text" id="user-answer" autocomplete="off" />
         <button type="submit">Submit Answer</button>
       </form>
 
-    <!-- Keypad -->
-<div class="keypad" id="keypad">
-  <div class="keypad-row">
-    <button type="button" onclick="appendDigit(1)">1</button>
-    <button type="button" onclick="appendDigit(2)">2</button>
-    <button type="button" onclick="appendDigit(3)">3</button>
-  </div>
-  <div class="keypad-row">
-    <button type="button" onclick="appendDigit(4)">4</button>
-    <button type="button" onclick="appendDigit(5)">5</button>
-    <button type="button" onclick="appendDigit(6)">6</button>
-  </div>
-  <div class="keypad-row">
-    <button type="button" onclick="appendDigit(7)">7</button>
-    <button type="button" onclick="appendDigit(8)">8</button>
-    <button type="button" onclick="appendDigit(9)">9</button>
-  </div>
-  <div class="keypad-row">
-    <button type="button" onclick="backspace()">⌫</button>
-    <button type="button" onclick="appendDigit(0)">0</button>
-    <button type="button" onclick="submitFromKeypad()">⏎</button>
-  </div>
-</div>
-
+      <!-- Keypad -->
+      <div class="keypad" id="keypad">
+        <div class="keypad-row">
+          <button type="button" onclick="appendDigit(1)">1</button>
+          <button type="button" onclick="appendDigit(2)">2</button>
+          <button type="button" onclick="appendDigit(3)">3</button>
+        </div>
+        <div class="keypad-row">
+          <button type="button" onclick="appendDigit(4)">4</button>
+          <button type="button" onclick="appendDigit(5)">5</button>
+          <button type="button" onclick="appendDigit(6)">6</button>
+        </div>
+        <div class="keypad-row">
+          <button type="button" onclick="appendDigit(7)">7</button>
+          <button type="button" onclick="appendDigit(8)">8</button>
+          <button type="button" onclick="appendDigit(9)">9</button>
+        </div>
+        <div class="keypad-row">
+          <button type="button" onclick="backspace()">⌫</button>
+          <button type="button" onclick="appendDigit(0)">0</button>
+          <button type="button" onclick="submitFromKeypad()">⏎</button>
+        </div>
+      </div>
 
       <div class="end-msg" id="end-msg"></div>
     </div>
@@ -347,7 +356,7 @@
 
     function loadNextQuestion() {
       if (totalQuestions >= maxQuestions) return endQuiz();
-      document.getElementById('user-answer').value = '';
+      document.getElementById('user-answer').value = ''; // Clear the input field when the next question loads
       document.getElementById('quiz-display').textContent = generateAbacusStyleQuestion();
       document.getElementById('user-answer').focus();
     }
@@ -382,7 +391,14 @@
     }
 
     function submitFromKeypad() {
-      document.getElementById('answer-form').requestSubmit();
+      const userAnswer = parseInt(document.getElementById('user-answer').value);
+      totalQuestions++;
+      if (userAnswer === currentAnswer) correctAnswers++;
+
+      // Clear the input after submitting
+      document.getElementById('user-answer').value = ''; // Clear the answer field after submission
+
+      loadNextQuestion(); // Load the next question
     }
 
     window.onload = function () {
@@ -392,9 +408,14 @@
       correctAnswers = 0;
       loadNextQuestion();
       startTimer();
+
+      // Check if the user is on mobile and adjust accordingly
+      if (window.innerWidth <= 600) {
+        document.getElementById('user-answer').setAttribute('readonly', 'true'); // Disable text input on mobile
+      } else {
+        document.getElementById('user-answer').removeAttribute('readonly'); // Enable text input on larger screens
+      }
     };
   </script>
-
-  <script src="javascript/menu.js"></script>
 </body>
 </html>
