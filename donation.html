@@ -13,7 +13,7 @@
     <header>
         <div class="top-navigation">
             <div class="brand">SHENMO GHANA</div>
-            <a href="donation.html" class="donate-button">Donate</a>
+            <a href="donation.html" class="donate-button">Pay Bills</a>
         </div>
         <nav class="main-navigation">
             <div class="logo-container">
@@ -33,18 +33,19 @@
     </header>
 
     <div class="donation-container">
-    <h2>Support Shenmo Ghana</h2>
-    <p>Your donation helps us provide quality education and resources for children. Every contribution makes a difference!</p>
+        <h2>Pay Your Bills with Ease</h2> 
+        <p>Stay on track by settling your Shenmo Ghana bills promptly. Your payments help us keep our programs running smoothly and ensure uninterrupted learning for every child.</p>
+        <p><strong>NB: Kindly confirm details correctly before making any payment</strong></p>
 
     <div class="donation-buttons">
-        <button class="donate-btn small" onclick="selectAmount(5)">Donate $5</button>
-        <button class="donate-btn medium" onclick="selectAmount(10)">Donate $10</button>
-        <button class="donate-btn large" onclick="selectAmount(20)">Donate $20</button>
+        <button class="donate-btn small" onclick="selectAmount(100)">Pay Gh₵100</button>
+        <button class="donate-btn medium" onclick="selectAmount(200)">Pay Gh₵200</button>
+        <button class="donate-btn large" onclick="selectAmount(300)">Pay Gh₵300</button>
         <button class="donate-btn custom" onclick="customDonation()">Other Amount</button>
     </div>
 
     <input type="number" id="custom-amount" placeholder="Enter custom amount" class="hidden">
-    <button class="donate-btn confirm" onclick="showDonationMethods()">Confirm Donation</button>
+    <button class="donate-btn confirm" onclick="showDonationMethods()">Confirm Payment</button>
 
     <!-- Tab Menu for Mobile Money and Bank Transfer -->
     <div class="donation-methods" id="donation-methods">
@@ -55,41 +56,33 @@
 
         <!-- Mobile Money Section -->
         <div class="donation-section" id="momo-section">
-            <h3>📱 Donate via Mobile Money</h3>
+            <h3>📱 Pay Bills via Mobile Money</h3>
             <p><strong>MTN MoMo:</strong></p>
             <ol>
-                <li>Dial <strong>*170#</strong></li>
-                <li>Select **Option 1 (Transfer Money)**</li>
-                <li>Choose **Option 2 (Momo User)**</li>
-                <li>Enter Number: <strong>0249460223</strong></li>
+                <li>Dial <strong>*170#</strong></li> <br>
+                <li>Select Option 1 (Transfer Money)</li> <br>
+                <li>Choose Option 2 (Momo User)</li> <br>
+                <li>Enter Number: <strong>0249460223</strong></li> <br>
                 <li>Enter Amount & Confirm</li>
             </ol>
 
             <p><strong>Vodafone Cash:</strong></p>
             <ol>
-                <li>Dial <strong>*110#</strong></li>
-                <li>Select **Option 1 (Send Money)**</li>
-                <li>Enter Number: <strong>0500926000</strong></li>
-                <li>Enter Amount & Confirm</li>
-            </ol>
-
-            <p><strong>AirtelTigo Money:</strong></p>
-            <ol>
-                <li>Dial <strong>*110#</strong></li>
-                <li>Select **Option 1 (Send Money)**</li>
-                <li>Enter Number: <strong>0500926000</strong></li>
+                <li>Dial <strong>*110#</strong></li> <br>
+                <li>Select Option 1 (Send Money)</li> <br>
+                <li>Enter Number: <strong>0500926000</strong></li> <br>
                 <li>Enter Amount & Confirm</li>
             </ol>
         </div>
 
         <!-- Bank Transfer Section -->
         <div class="donation-section hidden" id="bank-section">
-            <h3>🏦 Donate via Bank Transfer</h3>
-            <p><strong>Bank Name:</strong> Ghana Commercial Bank (GCB)</p>
-            <p><strong>Account Name:</strong> Shenmo Ghana</p>
-            <p><strong>Account Number:</strong> 1234567890123</p>
+            <h3>🏦 Pay Bills via Bank Transfer</h3>
+            <p><strong>Bank Name:</strong>  Bank of Africa Ghana Ltd.</p>
+            <p><strong>Account Name:</strong> SHENMO GHANA LBG</p>
+            <p><strong>Account Number:</strong> 02990440005</p>
             <p><strong>Branch:</strong> East Legon, Accra</p>
-            <p>Kindly include "Donation - Your Name" as the reference when making the transfer.</p>
+            <p>Kindly include "Payment - Your Child's Name" as the reference when making the transfer.</p>
         </div>
 
         <p class="thank-you-message hidden">Thank you for your support! ❤️</p>
