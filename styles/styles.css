@@ -184,7 +184,7 @@ header {
 /* Mobile version (applies on screens ≤ 768px) */
 @media (max-width: 768px) {
     .hero {
-        height: 30vh; /* 30% of viewport height on mobile */
+        height: 40vh; 
     }
 }
 
