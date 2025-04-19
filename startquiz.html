@@ -223,7 +223,7 @@
       <div class="quiz-box" id="quiz-display">Loading...</div>
 
       <form id="answer-form" class="input-group">
-        <input type="text" id="user-answer" autocomplete="off" placeholder="Enter your answer" />
+        <input type="number" id="user-answer" autocomplete="off" placeholder="Enter your answer" inputmode="numeric" />
         <button type="submit">Submit</button>
       </form>
 
@@ -408,10 +408,11 @@
         correctAnswers++;
       }
       if (questionIndex < 200) {
-        loadNextQuestion();
-      } else {
-        endQuiz();
-      }
+  loadNextQuestion();
+  document.getElementById('user-answer').value = '';
+} else {
+  endQuiz();
+}
     });
 
     // Keypad functions
