@@ -1,423 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <title>SHENMO GHANA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles/styles.css">
-  <link rel="stylesheet" href="styles/qstyles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css"> 
+    <meta charset="utf-8" />
+    <title>SHENMO GHANA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/qstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f5f5;
-    }
-
-    .dashboard-container {
-      display: flex;
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-    }
-
-    .sidebar {
-      width: 140px;
-      background-color: #4CAF50;
-      color: white;
-      padding: 20px 0;
-      min-height: 100vh;
-    }
-
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .sidebar ul li {
-      padding: 15px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .sidebar ul li a {
-      color: white;
-      text-decoration: none;
-      display: block;
-    }
-
-    .sidebar ul li a:hover {
-      background-color: #388e3c;
-      border-radius: 4px;
-    }
-
-    .content {
-      flex: 1;
-      padding: 30px;
-      overflow-y: auto;
-      background-color: #fff;
-    }
-
-    .quiz-box {
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fefefe;
-      border-left: 5px solid #4CAF50;
-      border-radius: 5px;
-      max-width: 400px;
-      font-family: monospace;
-      white-space: pre;
-      font-size: 18px;
-    }
-
-    .input-group {
-      margin-top: 15px;
-    }
-
-    input[type="number"] {
-      padding: 8px;
-      width: 100%;
-      margin-top: 5px;
-    }
-
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .timer {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .end-msg {
-      font-weight: bold;
-      font-size: 18px;
-      margin-top: 20px;
-      color: #333;
-    }
-
-    .keypad {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 30px auto;
-      max-width: 280px;
-      width: 100%;
-    }
-
-    .keypad-row {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-
-    .keypad-row button {
-      flex: 1;
-      margin: 0 5px;
-      padding: 15px 0;
-      font-size: 18px;
-      background-color: #388e3c;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .keypad-row button:hover {
-      background-color: #2e7d32;
-    }
-
-    /* Mobile optimization */
-    @media (max-width: 600px) {
-      /* Show the input on mobile and enable typing */
-      #user-answer {
-        display: block;
-      }
-
-      .keypad {
-        display: block;
-      }
-    }
-
-    /* For larger screens (laptops), show the physical input and keypad */
-    @media (min-width: 601px) {
-      #user-answer {
-        display: block;
-      }
-
-      .keypad {
-        display: none;
-      }
-    }
-
-    footer {
-      background: #003366;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
-
-    footer a {
-      color: #fff;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="top-navigation">
-      <div class="brand">SHENMO GHANA</div>
-      <a href="donation.html" class="donate-button">Pay Bills</a>
-    </div>
-    <nav class="main-navigation">
-      <div class="logo-container">
-        <img src="thumbnails/logo.png" alt="Logo">
-      </div>
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-      <ul class="nav-links">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="registration.html">Registration</a></li>
-        <li><a href="program.html">Programs</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div class="dashboard-container">
-    <div class="sidebar">
-      <ul>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="users.html">Users</a></li>
-        <li><a href="quiz.html">Abacus Quiz</a></li>
-        <li><a href="home.html">Logout</a></li>
-      </ul>
-    </div>
-
-    <div class="content">
-      <h2>Abacus Speed Quiz</h2>
-      <div class="timer" id="timer">Time Left: 03:00</div>
-
-      <div class="quiz-box" id="quiz-display"></div>
-
-      <form id="answer-form" class="input-group">
-        <label for="user-answer">Your Answer:</label>
-        <input type="text" id="user-answer" autocomplete="off" />
-        <button type="submit">Submit Answer</button>
-      </form>
-
-      <!-- Keypad -->
-      <div class="keypad" id="keypad">
-        <div class="keypad-row">
-          <button type="button" onclick="appendDigit(1)">1</button>
-          <button type="button" onclick="appendDigit(2)">2</button>
-          <button type="button" onclick="appendDigit(3)">3</button>
-        </div>
-        <div class="keypad-row">
-          <button type="button" onclick="appendDigit(4)">4</button>
-          <button type="button" onclick="appendDigit(5)">5</button>
-          <button type="button" onclick="appendDigit(6)">6</button>
-        </div>
-        <div class="keypad-row">
-          <button type="button" onclick="appendDigit(7)">7</button>
-          <button type="button" onclick="appendDigit(8)">8</button>
-          <button type="button" onclick="appendDigit(9)">9</button>
-        </div>
-        <div class="keypad-row">
-          <button type="button" onclick="backspace()">⌫</button>
-          <button type="button" onclick="appendDigit(0)">0</button>
-          <button type="button" onclick="submitFromKeypad()">⏎</button>
-        </div>
-      </div>
-
-      <div class="end-msg" id="end-msg"></div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-container">
-      <div class="footer-logo">
-        <img src="thumbnails/images.png" alt="">
-        <p>Empowering minds through education and innovation.</p>
-      </div>
-
-      <div class="footer-links">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="registration.html">Registration</a></li>
-          <li><a href="program.html">Programs</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-contact">
-        <h3>Contact Us</h3>
-        <p><i class="fas fa-map-marker-alt"></i> Ahobrase Plaza, East Legon, Accra, Ghana</p>
-        <p><i class="fas fa-phone"></i> 0500926000 | 0249460223</p>
-        <p><i class="fas fa-envelope"></i> shenmoghana@gmail.com</p>
-      </div>
-
-      <div class="footer-social">
-        <h3>Follow Us</h3>
-        <a href="https://web.facebook.com/shenmoghana/" title="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.youtube.com/@shenmoghana?app=desktop" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.instagram.com/shenmoghana/" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/552595297" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2025 Shenmo Ghana. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script>
-    let currentAnswer = 0;
-    let totalQuestions = 0;
-    let correctAnswers = 0;
-    const maxQuestions = 200;
-    let totalTime = 180; // 3 minutes
-    let timerInterval;
-
-    function startTimer() {
-      timerInterval = setInterval(() => {
-        totalTime--;
-        updateTimerDisplay();
-        if (totalTime <= 0) endQuiz();
-      }, 1000);
-    }
-
-    function updateTimerDisplay() {
-      const mins = String(Math.floor(totalTime / 60)).padStart(2, '0');
-      const secs = String(totalTime % 60).padStart(2, '0');
-      document.getElementById('timer').textContent = `Time Left: ${mins}:${secs}`;
-    }
-
-    function generateAbacusStyleQuestion() {
-      let total = 0;
-      let ops = [];
-
-      const patterns = [
-        ['+5', '-2', '+3'],
-        ['+2', '+3', '-4'],
-        ['+1', '+2', '+3', '-5'],
-        ['+3', '+4', '-6'],
-        ['+5', '-1', '-3'],
-        ['+4', '+1', '-2'],
-        ['+6', '-2', '-3'],
-        ['+7', '-4', '+2'],
-        ['+2', '-1', '+3', '-2']
-      ];
-
-      while (true) {
-        const pattern = patterns[Math.floor(Math.random() * patterns.length)];
-        total = 0;
-        ops = [];
-
-        for (let op of pattern) {
-          const num = parseInt(op.slice(1));
-          const isAdd = op.startsWith('+');
-          total += isAdd ? num : -num;
-          ops.push(op);
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        if (total >= 1 && total <= 9) break;
-      }
+        html,
+        body {
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            padding: 2px;
+        }
 
-      currentAnswer = total;
-      return ops.map(op => op.padStart(3)).join("\n");
-    }
+        .dashboard-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
 
-    function loadNextQuestion() {
-      if (totalQuestions >= maxQuestions) return endQuiz();
-      document.getElementById('user-answer').value = ''; // Clear the input field when the next question loads
-      document.getElementById('quiz-display').textContent = generateAbacusStyleQuestion();
-      document.getElementById('user-answer').focus();
-    }
+        .sidebar {
+            width: 140px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            min-height: 100vh;
+        }
 
-    function endQuiz() {
-      clearInterval(timerInterval);
-      document.getElementById('quiz-display').textContent = '';
-      document.getElementById('answer-form').style.display = 'none';
-      document.getElementById('keypad').style.display = 'none';
-      document.getElementById('end-msg').textContent =
-        `⏱️ Time's up or 200 questions done!\nYou answered ${correctAnswers} out of ${totalQuestions} correctly.`;
-      localStorage.setItem("quiz_total", totalQuestions);
-      localStorage.setItem("quiz_correct", correctAnswers);
-    }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
 
-    document.getElementById('answer-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const userAnswer = parseInt(document.getElementById('user-answer').value);
-      totalQuestions++;
-      if (userAnswer === currentAnswer) correctAnswers++;
-      loadNextQuestion();
-    });
+        .sidebar ul li {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-    function appendDigit(digit) {
-      const input = document.getElementById('user-answer');
-      input.value += digit;
-    }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
 
-    function backspace() {
-      const input = document.getElementById('user-answer');
-      input.value = input.value.slice(0, -1);
-    }
+        .sidebar ul li a:hover {
+            background-color: #388e3c;
+            border-radius: 4px;
+        }
 
-    function submitFromKeypad() {
-      const userAnswer = parseInt(document.getElementById('user-answer').value);
-      totalQuestions++;
-      if (userAnswer === currentAnswer) correctAnswers++;
+        .content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            background-color: #fff;
+        }
 
-      // Clear the input after submitting
-      document.getElementById('user-answer').value = ''; // Clear the answer field after submission
+        .quiz-box {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fefefe;
+            border-left: 5px solid #4CAF50;
+            border-radius: 5px;
+            max-width: 400px;
+            font-family: monospace;
+            white-space: pre;
+            font-size: 18px;
+        }
 
-      loadNextQuestion(); // Load the next question
-    }
+        .input-group {
+            margin-top: 15px;
+        }
 
-    window.onload = function () {
-      localStorage.setItem("quiz_total", 0);
-      localStorage.setItem("quiz_correct", 0);
-      totalQuestions = 0;
-      correctAnswers = 0;
-      loadNextQuestion();
-      startTimer();
+        input[type="number"] {
+            padding: 8px;
+            width: 100%;
+            margin-top: 5px;
+        }
 
-      // Check if the user is on mobile and adjust accordingly
-      if (window.innerWidth <= 600) {
-        document.getElementById('user-answer').setAttribute('readonly', 'true'); // Disable text input on mobile
-      } else {
-        document.getElementById('user-answer').removeAttribute('readonly'); // Enable text input on larger screens
-      }
-    };
-  </script>
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-<script src="javascript/menu.js"></script>
+        .timer {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .end-msg {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .keypad {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px auto;
+            max-width: 280px;
+            width: 100%;
+        }
+
+        .keypad-row {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .keypad-row button {
+            flex: 1;
+            margin: 0 5px;
+            padding: 15px 0;
+            font-size: 18px;
+            background-color: #388e3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .keypad-row button:hover {
+            background-color: #2e7d32;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 600px) {
+            /* Show the input on mobile and enable typing */
+            #user-answer {
+                display: block;
+            }
+
+            .keypad {
+                display: block;
+            }
+        }
+
+        /* For larger screens (laptops), show the physical input and keypad */
+        @media (min-width: 601px) {
+            #user-answer {
+                display: block;
+            }
+
+            .keypad {
+                display: none;
+            }
+        }
+
+        footer {
+            background: #003366;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="top-navigation">
+            <div class="brand">SHENMO GHANA</div>
+            <a href="donation.html" class="donate-button">Pay Bills</a>
+        </div>
+        <nav class="main-navigation">
+            <div class="logo-container">
+                <img src="thumbnails/logo.png" alt="Logo">
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="program.html">Programs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="users.html">Users</a></li>
+                <li><a href="quiz.html">Abacus Quiz</a></li>
+                <li><a href="home.html">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="container" id="dashboard">
+            <h2>Select Quiz Section</h2>
+            <div class="section-select">
+                <!-- Added redirection to startquiz.html with appropriate section parameter -->
+                <button onclick="startQuiz('A')">Section A</button>
+                <button onclick="startQuiz('B')">Section B</button>
+                <button onclick="startQuiz('C')">Section C</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="thumbnails/images.png" alt="">
+                <p>Empowering minds through education and innovation.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="registration.html">Registration</a></li>
+                    <li><a href="program.html">Programs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Ahobrase Plaza, East Legon, Accra, Ghana</p>
+                <p><i class="fas fa-phone"></i> 0500926000 | 0249460223</p>
+                <p><i class="fas fa-envelope"></i> shenmoghana@gmail.com</p>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <a href="https://web.facebook.com/shenmoghana/" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@shenmoghana?app=desktop" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/shenmoghana/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/552595297" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Shenmo Ghana. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to redirect to the startquiz.html page with the selected section
+        function startQuiz(section) {
+            window.location.href = `startquiz.html?section=${section}`;
+        }
+    </script>
+
+    <script src="javascript/menu.js"></script>
 </body>
+
 </html>
