@@ -40,7 +40,7 @@
             <!-- Volunteer Registration Section -->
             <div class="form-box">
                 <h2>Join Our Team</h2>
-                <button id="volunteerBtn" class="toggle-btn">Become a Volunteer</button>
+                <button id="volunteerBtn" class="toggle-btn">Become a Member</button>
         
                 <div id="volunteerForm" class="hidden">
                     <form id="volunteerFormEl">
@@ -53,8 +53,8 @@
                         <label for="volPhone">Phone Number</label>
                         <input type="tel" id="volPhone" name="phone" placeholder="Enter your phone number" required>
         
-                        <label for="volMessage">Why do you want to volunteer?</label>
-                        <textarea id="volMessage" name="message" placeholder="Tell us why..." required></textarea>
+                        <label for="volMessage">Want to join us?</label>
+                        <textarea id="volMessage" name="message" placeholder="Leave a message and submit your CV to the Email..." required></textarea>
         
                         <button type="submit" class="submit-btn">Submit</button>
                     </form>
@@ -65,20 +65,29 @@
             <div class="form-box">
                 <h2>Send Us a Message</h2>
                 <form id="contactFormEl">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-        
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-        
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
-        
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
-        
-                    <button type="submit" class="submit-btn">Send Message</button>
+                  
+                  <label for="name">Parent's Full Name</label>
+                  <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+              
+                  <label for="childName">Child's Name</label>
+                  <input type="text" id="childName" name="childName" placeholder="Enter your child's name" required>
+              
+                  <label for="contactNumber">Parent Contact Number</label>
+                  <input type="tel" id="contactNumber" name="contactNumber" placeholder="Enter your phone number" required pattern="[0-9]{10,15}" title="Please enter a valid phone number">
+              
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" placeholder="Enter your email" required>
+              
+                  <label for="subject">Subject</label>
+                  <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+              
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+              
+                  <button type="submit" class="submit-btn">Send Message</button>
                 </form>
+              </div>
+              
                 <p>Open a PDF file <a href="document/Agreement_Shenmo Abacus Mental Math 2024.pdf">Terms and Conditions</a>.</p>
                 
             </div>

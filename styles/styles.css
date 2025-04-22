@@ -653,3 +653,455 @@ footer {
 }
 
 
+.containerTeam {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
+  
+  .containerTeam h1 {
+    margin-bottom: 50px;
+    font-size: 36px;
+    color: #333;
+  }
+  
+  .team-stack {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 450px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .team-member {
+    position: absolute;
+    width: 260px;
+    transition: all 0.7s ease;
+    opacity: 0;
+    transform: scale(0.7);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .team-member img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .team-member .content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 0;
+    border-radius: 0 0 12px 12px;
+    text-align: center;
+  }
+  
+  .team-member h3 {
+    margin: 5px 0 0;
+    font-size: 18px;
+    color: #222;
+  }
+  
+  .team-member p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  /* Main image in center */
+  .team-member.active {
+    transform: translateX(0) scale(1.2);
+    opacity: 1;
+    z-index: 3;
+    pointer-events: auto;
+  }
+  
+  /* One before */
+  .team-member.prev {
+    transform: translateX(-320px) scale(0.9);
+    opacity: 0.6;
+    z-index: 2;
+  }
+  
+  /* One after */
+  .team-member.next {
+    transform: translateX(320px) scale(0.9);
+    opacity: 0.6;
+    z-index: 2;
+  }
+  
+  @media (max-width: 768px) {
+    .containerTeam {
+      padding: 30px 10px;
+    }
+  }
+
+  
+  .shenmo-intro {
+    width: 100%;
+    padding: 60px 30px;
+    background: #f9f9f9;
+    border-radius: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .shenmo-intro h2 {
+    font-size: 32px;
+    color: #1d3557;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .shenmo-intro p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .shenmo-intro {
+      padding: 40px 15px;
+    }
+
+    .shenmo-intro h2 {
+      font-size: 24px;
+    }
+
+    .shenmo-intro p {
+      font-size: 16px;
+    }
+  }
+
+
+  /* === Shenmo Ghana Student Success Spotlight === */
+
+.success-story-spotlight {
+    width: 100%;
+    background-color: #f0f4f8;
+    padding: 100px 0;
+    margin: 0;
+  }
+  
+  .spotlight-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .success-story-spotlight h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #1a237e;
+    text-align: center;
+  }
+  
+  .success-story-spotlight .intro {
+    font-size: 1.3em;
+    margin-bottom: 60px;
+    color: #444;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  .student-spotlight {
+    position: relative;
+    width: 100%;
+  }
+  
+  /* === Testimonial Card === */
+  .quote-box {
+    display: none;
+    align-items: stretch;
+    justify-content: space-between;
+    background: #fff;
+    padding: 60px 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .quote-box.active {
+    display: flex;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* === Equal Column Layout: Quote and Image === */
+  .quote-text,
+  .quote-image {
+    flex: 1 1 50%;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  
+/* === Large, Bold Quote Text === */
+.quote-text blockquote {
+    font-size: 3.5em; /* Much bigger quote text */
+    font-weight: bold; /* Bold quotes */
+    font-style: italic;
+    color: #222;
+    line-height: 1.8;
+    margin: 0;
+  }
+  
+  
+  /* === Student Name Footer with Styled Background === */
+  .quote-text blockquote footer {
+    margin-top: 20px;
+    background-color: #e0e0e0; /* Ash background */
+    color: #000; /* Black text */
+    padding: 12px 20px;
+    border-radius: 6px;
+    display: inline-block;
+    font-size: 20px; /* Small font size for student names */
+    font-weight: 600;
+  }
+  
+  /* === Image Styling === */
+  .quote-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: auto;
+  }
+  
+  /* === Mobile Styles === */
+  @media (max-width: 768px) {
+    .quote-box {
+      flex-direction: column;
+      text-align: center;
+      padding: 40px 20px;
+    }
+  
+    .quote-text,
+    .quote-image {
+      padding: 0;
+    }
+  
+    .quote-image img {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+  
+    .quote-text blockquote {
+      font-size: 1.6em; /* Slightly smaller for mobile */
+    }
+  
+    .quote-text blockquote footer {
+      font-size: 14px;
+      margin-top: 20px;
+    }
+  }
+
+
+  .abacus-training {
+    width: 100%;
+    padding: 80px 20px;
+    background-color: #f9fafb;
+    box-sizing: border-box;
+  }
+  
+  .training-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .training-image {
+    flex: 1 1 45%;
+    text-align: center;
+  }
+  
+  .training-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .training-content {
+    flex: 1 1 50%;
+  }
+  
+  .training-content h2 {
+    font-size: 2.5em;
+    color: #1a237e;
+    margin-bottom: 20px;
+  }
+  
+  .training-content p {
+    font-size: 1.2em;
+    color: #444;
+    line-height: 1.8;
+  }
+  
+  .training-extra {
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    padding: 0 20px;
+  }
+  
+  .training-extra p {
+    font-size: 1.2em;
+    color: #444;
+    line-height: 1.8;
+    text-align: center;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .training-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .training-content {
+      order: 2;
+    }
+  
+    .training-image {
+      order: 1;
+    }
+  
+    .training-content h2 {
+      font-size: 2em;
+    }
+  
+    .training-content p,
+    .training-extra p {
+      font-size: 1.1em;
+    }
+  }
+  
+  .mission-vision-clouds {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    padding: 100px 20px;
+    background-color: #c6dbf0;
+    background-size: cover; /* Ensure the background covers the full section */
+    min-height: 70vh; /* Ensure the section is tall enough to show the background */
+  }
+  
+  .cloud-card {
+    position: relative;
+    background: white;
+    padding: 40px 30px;
+    width: 420px;
+    height: 300px;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    animation: floatCloud 6s ease-in-out infinite;
+    transition: transform 0.3s ease;
+  }
+  
+  .cloud-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .cloud-card::before,
+  .cloud-card::after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
+  .cloud-card::before {
+    width: 100px;
+    height: 100px;
+    top: -40px;
+    left: 40px;
+  }
+  
+  .cloud-card::after {
+    width: 80px;
+    height: 80px;
+    top: -30px;
+    right: 40px;
+  }
+  
+  .cloud-card h2 {
+    color: #1565c0;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+  }
+  
+  .cloud-card p {
+    font-size: 1.15em;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .cloud-card p strong {
+    color: #1a237e;
+  }
+  
+  /* Float animation */
+  @keyframes floatCloud {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Delay for second card */
+  .cloud-card.delay {
+    animation-delay: 2s;
+  }
+  
+  /* Mobile View: Each container takes 100% width and stacks vertically */
+  @media (max-width: 768px) {
+    .mission-vision-clouds {
+      flex-direction: column; /* Stack the containers vertically */
+      align-items: center;
+    }
+  
+    .cloud-card {
+      width: 100%; /* Full width on mobile */
+      margin-bottom: 30px; /* Space between the cloud containers */
+      border-radius: 50px; /* Keep the cloud shape */
+      padding: 40px 20px; /* Adjust padding */
+    }
+  
+    .cloud-card:last-child {
+      margin-bottom: 0; /* Remove bottom margin on the last card */
+    }
+  }
+  
+
