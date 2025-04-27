@@ -351,8 +351,11 @@ header {
     .more-news {
         width: 100%;
     }
-}
 
+    .news-events h2 {
+      font-size: 22px;
+    }
+}
 
 
 /* Fullscreen Forms */
@@ -776,7 +779,7 @@ footer {
     }
 
     .shenmo-intro h2 {
-      font-size: 24px;
+      font-size: 17px;
     }
 
     .shenmo-intro p {
@@ -809,7 +812,7 @@ footer {
   }
   
   .success-story-spotlight .intro {
-    font-size: 1.3em;
+    font-size: 22px;
     margin-bottom: 60px;
     color: #444;
     text-align: center;
@@ -820,6 +823,18 @@ footer {
     position: relative;
     width: 100%;
   }
+
+  @media (max-width: 768px) {
+  .success-story-spotlight h2 {
+    font-size: 22px;
+  }
+
+  .success-story-spotlight .intro {
+    font-size: 14px;
+  }
+}
+
+
   
   /* === Testimonial Card === */
   .quote-box {
@@ -994,7 +1009,7 @@ footer {
     }
   
     .training-content h2 {
-      font-size: 2em;
+      font-size: 18px;
     }
   
     .training-content p,
@@ -1190,12 +1205,21 @@ footer {
     .blog-text {
       width: 100%; /* Take full width on mobile */
       padding: 0;
+      font-size: 17px;
     }
   
     .blog-image {
       width: 100%; /* Image takes full width on mobile */
       padding: 0;
     }
+  }
+
+  .blog-container h1 {
+    font-size: 17px;
+  }
+
+  .blog-container h2 {
+    font-size: 17px;
   }
   
   /* Overall Section Styling */
@@ -1214,7 +1238,7 @@ footer {
   }
   
   .abacus-text h2 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 20px;
     color: #1a4d8f;
@@ -1254,7 +1278,11 @@ footer {
   /* Responsive Style (Mobile View) */
   @media screen and (max-width: 768px) {
     .abacus-text h2 {
-      font-size: 1.8rem;
+      font-size: 22px;
+    }
+
+    .abacus-text h3 {
+      font-size: 22px;
     }
   
     .abacus-text p {
