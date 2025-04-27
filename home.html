@@ -1,244 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHENMO GHANA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHENMO GHANA</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
 
-  <!-- Your old stylesheets -->
-  <link rel="stylesheet" href="styles/styles.css">
-  <link rel="stylesheet" href="styles/pages.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-  <!-- New small scroll animation styles -->
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      overflow-x: hidden;
-    }
-    header {
-      position: relative;
-      z-index: 1000;
-    }
-    .scroll-animate {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .scroll-animate.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
-  
 
 </head>
-
 <body>
-  <header class="scroll-animate">
-    <div class="top-navigation">
-      <div class="brand">SHENMO GHANA</div>
-      <a href="donation.html" class="donate-button">Pay Bills</a>
-    </div>
-    <nav class="main-navigation">
-      <div class="logo-container">
-        <img src="thumbnails/logo.png" alt="Logo">
-      </div>
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-      <ul class="nav-links">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="registration.html">Registration</a></li>
-        <li><a href="program.html">Programs</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero scroll-animate">
-      <div class="slideshows">
-        <div class="slides slides1"></div>
-        <div class="slides slides2"></div>
-        <div class="slides slides3"></div>
-        <div class="slides slides4"></div>
-        <div class="slides slides5"></div>
-      </div>
-      <div class="hero-content">
-        <h1 class="welcome">WELCOME TO SHENMO GHANA</h1>
-        <p>"Equality, Respect, Trust, Admiration, Attention, and Inspiration"</p>
-      </div>
-    </section>
-
-    <section class="shenmo-intro scroll-animate">
-      <h2>Welcome to Shenmo Ghana – Empowering Young Minds With Technology</h2>
-      <p>Shenmo Ghana is dedicated to delivering outstanding educational support services with a strong focus on innovation, creativity, and holistic development for children across all schools. Our brain development programs are designed to strengthen lifelong cognitive skills, setting the foundation for future success and confident learning.</p>
-    </section>
-
-    <section class="news-events scroll-animate">
-      <h2>What's Happening</h2>
-      <div class="news-container">
-        <div class="main-news" id="main-news">
-          <img id="main-img" src="images/WhatsApp Image 2025-04-17 at 17.52.19_e72ed6e2.jpg" alt="Main News Image">
-          <h3 id="main-title"><strong>VACATION ABACUS MENTAL MATH PROGRAM APRIL/MAY 2025</strong></h3>
-          <p id="main-desc">
-            Are you looking for the perfect program for your kids this April/May School Holidays? Then Shenmo Ghana's special Abacus Mental Math program is the answer.<br><br>
-            As a whole brain 🧠 development program, our Abacus program helps learners overcome Math anxiety, build their self-confidence, enhance imagination and critical thinking, improve memory and attention, and prepare them for a successful academic and personal life.<br><br>
-            Ready to sign up? Check the attached poster and book our private home or online learning experience now!
-          </p>
+    <header>
+        <div class="top-navigation">
+            <div class="brand">SHENMO GHANA</div>
+            <a href="donation.html" class="donate-button">Pay Bills</a>
         </div>
+        <nav class="main-navigation">
+            <div class="logo-container">
+                <img src="thumbnails/logo.png" alt="Logo">
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="program.html">Programs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    
+    <main>
+        <section class="hero">
+            <div class="slideshows">
+                <div class="slides slides1"></div>
+                <div class="slides slides2"></div>
+                <div class="slides slides3"></div>
+                <div class="slides slides4"></div>
+                <div class="slides slides5"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="welcome">WELCOME TO SHENMO GHANA</h1>
+                <p>"Equality, Respect, Trust, Admiration, Attention, and Inspiration"</p>
+            </div>
+        </section>
 
-        <div class="more-news">
-          <div class="news-item">Vacation Abacus Mental Math Program April/May 2025</div>
-          <div class="news-item">Shenmo Ghana Competition (Kumasi) - April 5, 2025</div>
-          <div class="news-item">Happy Independence Day Ghana - March 6, 2025</div>
-          <div class="news-item">Shenmo School Awards - January 16, 2025</div>
-          <div class="news-item">Shenmo Office - October 24, 2024</div>
+        <section class="shenmo-intro">
+            <h2>Welcome to Shenmo Ghana – Empowering Young Minds With Technology</h2>
+            <p>
+              Shenmo Ghana is dedicated to delivering outstanding educational support services with a strong focus on innovation, creativity, and holistic development for children across all schools. 
+              Our brain development programs are designed to strengthen lifelong cognitive skills, setting the foundation for future success and confident learning.
+            </p>
+          </section>
+        
+          <section class="news-events">
+            <h2>What's Happening</h2>
+          
+            <div class="news-container">
+              <!-- Main News (Left Side with Image) -->
+              <div class="main-news" id="main-news">
+                <img id="main-img" src="images/WhatsApp Image 2025-04-17 at 17.52.19_e72ed6e2.jpg" alt="Main News Image">
+                <h3 id="main-title"><strong>VACATION ABACUS MENTAL MATH PROGRAM APRIL/MAY 2025</strong></h3>
+                <p id="main-desc">
+                  Are you looking for the perfect program for your kids this April/May School Holidays? Then Shenmo Ghana's special Abacus Mental Math program is the answer.<br><br>
+                  As a whole brain 🧠 development program, our Abacus program helps learners overcome Math anxiety, build their self-confidence, enhance imagination and critical thinking, improve memory and attention, and prepare them for a successful academic and personal life.<br><br>
+                  Ready to sign up? Check the attached poster and book our private home or online learning experience now!
+                </p>
+              </div>
+          
+              <!-- More News (Right Side) -->
+              <div class="more-news">
+                <div class="news-item">Vacation Abacus Mental Math Program April/May 2025</div>
+                <div class="news-item">Shenmo Ghana Competition (Kumasi) - April 5, 2025</div>
+                <div class="news-item">Happy Independence Day Ghana - March 6, 2025</div>
+                <div class="news-item">Shenmo School Awards - January 16, 2025</div>
+                <div class="news-item">Shenmo Office - October 24, 2024</div>
+              </div>
+            </div>
+          </section>
+          
+          <script>
+            const newsData = [
+              {
+                img: "images/WhatsApp Image 2025-04-17 at 17.52.19_e72ed6e2.jpg",
+                title: "VACATION ABACUS MENTAL MATH PROGRAM APRIL/MAY 2025",
+                desc: "Are you looking for the perfect program for your kids this April/May School Holidays? Then Shenmo Ghana's special Abacus Mental Math program is the answer.<br><br>As a whole brain 🧠 development program, our Abacus program helps learners overcome Math anxiety, build their self-confidence, enhance imagination and critical thinking, improve memory and attention, and prepare them for a successful academic and personal life.<br><br>Ready to sign up? Check the attached poster and book our private home or online learning experience now!"
+              },
+              {
+                img: "images/ShMentalMath-221.jpg",
+                title: "Shenmo Ghana Competition (Kumasi) - April 5, 2025",
+                desc: "The Shenmo Ghana Kumasi Competition was a huge success! Students showcased their mental math skills with speed and confidence. Big shoutout to all participants and winners!"
+              },
+              {
+                img: "images/Screenshot 2025-04-22 062707.png",
+                title: "Happy Independence Day Ghana - March 6, 2025",
+                desc: "Celebrating Ghana's independence with pride! 🇬🇭 Shenmo Ghana joins the nation in commemorating this historic day. Here's to freedom, progress, and learning."
+              },
+              {
+                img: "images/IMG-20241027-WA0010.jpg",
+                title: "Shenmo School Awards - January 16, 2025",
+                desc: "Honoring excellence in learning! Shenmo School Awards recognized outstanding students who excelled in the Abacus program. Keep aiming high!"
+              },
+              {
+                img: "images/IMG-20241027-WA0004.jpg",
+                title: "Shenmo Office - October 24, 2024",
+                desc: "We're growing! Shenmo Ghana opened a new office space to better serve students and schools across Ghana. Come visit us!"
+              }
+            ];
+          
+            let currentIndex = 0;
+          
+            function updateMainNews(index) {
+              document.getElementById("main-img").src = newsData[index].img;
+              document.getElementById("main-title").innerHTML = `<strong>${newsData[index].title}</strong>`;
+              document.getElementById("main-desc").innerHTML = newsData[index].desc;
+            }
+          
+            function rotateNews() {
+              currentIndex = (currentIndex + 1) % newsData.length;
+              updateMainNews(currentIndex);
+            }
+          
+            // Start rotation every 6 seconds
+            setInterval(rotateNews, 6000);
+          </script>
+          
+        
+        
+
+
+          <section class="success-story-spotlight">
+            <div class="spotlight-container">
+              <h2>Success Stories from Shenmo Ghana</h2>
+              <p class="intro">Hear what our amazing learners have to say about the Abacus Mental Math Program!</p>
+          
+              <div class="student-spotlight">
+                <div class="quote-box active">
+                  <div class="quote-text">
+                    <blockquote>
+                      <p>“Giving up on Mathematics or saying Math is difficult should be a thing of the past.I endorse Shenmo Abacus Ghana — a fun way to learn and master Mathematics. Thank you Shenmo Ghana!”</p>
+                      <footer>— Nakeeyat</footer>
+                    </blockquote>
+                  </div>
+                  <div class="quote-image">
+                    <img src="images/Nakeeyat.jpg" alt="Nakeeyat">
+                  </div>
+                </div>
+
+                <div class="quote-box">
+                  <div class="quote-text">
+                    <blockquote>
+                      <p>“I used to be afraid of numbers. Now, I solve big sums in seconds — and it's fun! Thank you Shenmo Ghana!”</p>
+                    <footer>— Christabel</footer>
+                    </blockquote>
+                  </div>
+                  <div class="quote-image">
+                    <img src="images/IMG-20241101-WA0011.jpg" alt="Christabel">
+                  </div>
+                </div>
+          
+                <div class="quote-box">
+                  <div class="quote-text">
+                    <blockquote>
+                      <p>“Abacus has made us faster in class and more confident. Abaus is fun and makes math easy for us. I even teach my other friends now!. We love you Shenmo Ghana.”</p>
+                      <footer>— Inna , Deborah</footer>
+                    </blockquote>
+                  </div>
+                  <div class="quote-image">
+                    <img src="images/IMG-20241026-WA0009.jpg" alt="Inna and Deborah">
+                  </div>
+                </div>
+          
+                <div class="quote-box">
+                  <div class="quote-text">
+                    <blockquote>
+                      <p>“Shenmo Ghana made math exciting! My concentration and memory have improved so much.”</p>
+                      <footer>— Salahudeen</footer>
+                    </blockquote>
+                  </div>
+                  <div class="quote-image">
+                    <img src="images/IMG-20250107-WA0043.jpg" alt="Salahudeen">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          <section class="abacus-training">
+            <div class="training-container">
+              <div class="training-image">
+                <img src="images/ShMentalMath-122.jpg" alt="Students learning abacus at Shenmo Ghana">
+              </div>
+              <div class="training-content">
+                <h2>In-Person Abacus Learning Experience</h2>
+                <p>
+                  At Shenmo Ghana, we bring the abacus experience directly to your classrooms. Our certified instructors engage learners
+                  through practical activities, interactive visuals, and stimulating games that promote active participation and real understanding.
+                  Each child receives focused attention to strengthen their skills and confidence in mental arithmetic.
+                </p>
+              </div>
+            </div>
+            <div class="training-extra">
+              <p>
+                This face-to-face approach creates a dynamic and enjoyable atmosphere where students sharpen their calculation speed, memory,
+                and analytical thinking. Whether you're a school or a parent looking to support your child's academic growth, our abacus sessions
+                offer a powerful and enjoyable foundation in cognitive development.
+              </p>
+            </div>
+          </section>
+          
+  
+    </main>
+    <footer>
+        <div class="footer-container">
+            <!-- Logo and About -->
+            <div class="footer-logo">
+                <img src="thumbnails/images.png" alt="">
+                <p>Empowering minds through education and innovation.</p>
+            </div>
+    
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="registration.html">Registration</a></li>
+                    <li><a href="program.html">Programs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Ahobrase Plaza, East Legon, Accra, Ghana</p>
+                <p><i class="fas fa-phone"></i> 0500926000 | 0249460223</p>
+                <p><i class="fas fa-envelope"></i>shenmoghana@gmail.com</a></p>
+            </div>
+    
+            <!-- Social Media -->
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <a href="https://web.facebook.com/shenmoghana/?_rdc=1&_rdr" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@shenmoghana?app=desktop" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/shenmoghana/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/552595297" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
         </div>
-      </div>
-    </section>
-
-    <section class="success-story-spotlight scroll-animate">
-      <div class="spotlight-container">
-        <h2>Success Stories from Shenmo Ghana</h2>
-        <p class="intro">Hear what our amazing learners have to say about the Abacus Mental Math Program!</p>
-
-        <div class="student-spotlight">
-          <div class="quote-box active">
-            <div class="quote-text">
-              <blockquote>
-                <p>“Giving up on Mathematics or saying Math is difficult should be a thing of the past. I endorse Shenmo Abacus Ghana — a fun way to learn and master Mathematics. Thank you Shenmo Ghana!”</p>
-                <footer>— Nakeeyat</footer>
-              </blockquote>
-            </div>
-            <div class="quote-image">
-              <img src="images/Nakeeyat.jpg" alt="Nakeeyat">
-            </div>
-          </div>
-
-          <div class="quote-box">
-            <div class="quote-text">
-              <blockquote>
-                <p>“I used to be afraid of numbers. Now, I solve big sums in seconds — and it's fun! Thank you Shenmo Ghana!”</p>
-                <footer>— Christabel</footer>
-              </blockquote>
-            </div>
-            <div class="quote-image">
-              <img src="images/IMG-20241101-WA0011.jpg" alt="Christabel">
-            </div>
-          </div>
-
-          <div class="quote-box">
-            <div class="quote-text">
-              <blockquote>
-                <p>“Abacus has made us faster in class and more confident. I even teach my other friends now! We love you Shenmo Ghana.”</p>
-                <footer>— Inna, Deborah</footer>
-              </blockquote>
-            </div>
-            <div class="quote-image">
-              <img src="images/IMG-20241026-WA0009.jpg" alt="Inna and Deborah">
-            </div>
-          </div>
-
-          <div class="quote-box">
-            <div class="quote-text">
-              <blockquote>
-                <p>“Shenmo Ghana made math exciting! My concentration and memory have improved so much.”</p>
-                <footer>— Salahudeen</footer>
-              </blockquote>
-            </div>
-            <div class="quote-image">
-              <img src="images/IMG-20250107-WA0043.jpg" alt="Salahudeen">
-            </div>
-          </div>
+    
+        <!-- Copyright Section -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Shenmo Ghana. All rights reserved.</p>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <section class="abacus-training scroll-animate">
-      <div class="training-container">
-        <div class="training-image">
-          <img src="images/ShMentalMath-122.jpg" alt="Students learning abacus at Shenmo Ghana">
-        </div>
-        <div class="training-content">
-          <h2>In-Person Abacus Learning Experience</h2>
-          <p>At Shenmo Ghana, we bring the abacus experience directly to your classrooms. Our certified instructors engage learners through practical activities, interactive visuals, and stimulating games that promote active participation and real understanding. Each child receives focused attention to strengthen their skills and confidence in mental arithmetic.</p>
-        </div>
-      </div>
-      <div class="training-extra">
-        <p>This face-to-face approach creates a dynamic and enjoyable atmosphere where students sharpen their calculation speed, memory, and analytical thinking. Whether you're a school or a parent looking to support your child's academic growth, our abacus sessions offer a powerful and enjoyable foundation in cognitive development.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="scroll-animate">
-    <div class="footer-container">
-      <div class="footer-logo">
-        <img src="thumbnails/images.png" alt="">
-        <p>Empowering minds through education and innovation.</p>
-      </div>
-
-      <div class="footer-links">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="registration.html">Registration</a></li>
-          <li><a href="program.html">Programs</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-contact">
-        <h3>Contact Us</h3>
-        <p><i class="fas fa-map-marker-alt"></i> Ahobrase Plaza, East Legon, Accra, Ghana</p>
-        <p><i class="fas fa-phone"></i> 0500926000 | 0249460223</p>
-        <p><i class="fas fa-envelope"></i> shenmoghana@gmail.com</p>
-      </div>
-
-      <div class="footer-social">
-        <h3>Follow Us</h3>
-        <a href="https://web.facebook.com/shenmoghana/?_rdc=1&_rdr" title="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.youtube.com/@shenmoghana?app=desktop" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.instagram.com/shenmoghana/" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/552595297" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2025 Shenmo Ghana. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Your old JavaScripts -->
-  <script src="javascript/script.js"></script>
-  <script src="javascript/slides.js"></script>
-  <script src="javascript/menu.js"></script>
-
-  <!-- New Scroll animation JavaScript -->
-  <script>
-    const scrollElements = document.querySelectorAll('.scroll-animate');
-
-    const scrollObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
+    <script>
+        const quotes = document.querySelectorAll(".quote-box");
+        let current = 0;
+      
+        function showNextQuote() {
+          quotes[current].classList.remove("active");
+          current = (current + 1) % quotes.length;
+          quotes[current].classList.add("active");
         }
-      });
-    }, { threshold: 0.2 });
+      
+        setInterval(showNextQuote, 6000);
+      </script>
+      
 
-    scrollElements.forEach(el => scrollObserver.observe(el));
-  </script>
-
+    <script src="javascript/script.js"></script>
+    <script src="javascript/slides.js"></script>
+    <script src="javascript/menu.js"></script>
 </body>
 </html>
