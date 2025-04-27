@@ -132,7 +132,7 @@ header {
 /* Mobile Styles */
 @media (max-width: 768px) {
     .nav-links {
-        width: 200px;
+        width: 115px;
     }
 }
 
