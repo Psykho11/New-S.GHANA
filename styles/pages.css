@@ -90,8 +90,13 @@ li {
 }
 
 .ghana-1 {
-    font-size: 27px;
-    color: blue;
+    font-size: 29px;
+    color: rgb(0, 0, 6);
+}
+
+.ghana-2{
+    font-size: 25px;
+    color: #1a237e;
 }
 
 .note {
