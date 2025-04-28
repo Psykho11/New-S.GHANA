@@ -103,7 +103,7 @@ header {
     top: 0;
     right: -100%;
     width: 150px;
-    height: 80vh;
+    height: 50vh;
     background: #f6f4f4;
     display: flex;
     flex-direction: column;
@@ -115,13 +115,13 @@ header {
 }
 
 .nav-links li {
-    margin: 20px 0;
+    margin: 5px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 /* Show menu when active */
@@ -1116,6 +1116,10 @@ footer {
   
     .cloud-card:last-child {
       margin-bottom: 0; /* Remove bottom margin on the last card */
+    }
+
+    .cloud-card p {
+      font-size: 1.10em;
     }
   }
 
