@@ -1290,7 +1290,9 @@ footer {
     }
   
     .abacus-text p {
-      font-size: 1rem;
+      font-size: 17px;
+      text-align: left;
+      
     }
   
     .abacus-image img {
