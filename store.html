@@ -136,6 +136,28 @@
       background-color: #1b5e20;
     }
 
+    #order-summary-popup {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e8f5e9;
+      border: 1px solid #2E7D32;
+      border-radius: 8px;
+      color: #1b5e20;
+      position: relative;
+    }
+
+    #order-summary-popup button {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: #1b5e20;
+    }
+
     @media (max-width: 800px) {
       .containershop {
         flex-direction: column;
@@ -192,7 +214,6 @@
     <section id="returning-signees">
       <h2>Returning Signees – Buy Individual Items</h2>
       <div class="product-grid">
-        <!-- Product Template -->
         <div class="product-card">
           <img src="images/abacus image.jpg" alt="Abacus Device">
           <h4>Abacus Device</h4>
@@ -249,6 +270,10 @@
     <ul id="cart-list"></ul>
     <p><strong>Total: GHS <span id="total">0.00</span></strong></p>
     <button onclick="confirmOrder()">Confirm Order</button>
+    <div id="order-summary-popup">
+      <button onclick="closePopup()">&times;</button>
+      <div id="order-summary-content"></div>
+    </div>
   </div>
 </div>
 
@@ -286,16 +311,28 @@
   }
 
   function confirmOrder() {
+    const popup = document.getElementById("order-summary-popup");
+    const content = document.getElementById("order-summary-content");
+
     if (cart.length === 0) {
-      alert("Your cart is empty.");
+      popup.style.display = "block";
+      content.innerHTML = "<strong>Your cart is empty.</strong>";
       return;
     }
-    let summary = "Confirm your order:\n\n";
+
+    let summary = "<strong>Confirm your order:</strong><br><br>";
     cart.forEach(item => {
-      summary += `${item.qty} × ${item.name} – GHS ${item.qty * item.price}\n`;
+      summary += `${item.qty} × ${item.name} – GHS ${item.qty * item.price}<br>`;
     });
-    summary += `\nTotal: GHS ${totalDisplay.textContent}`;
-    alert(summary);
+    summary += `<br><strong>Total: GHS ${totalDisplay.textContent}</strong>`;
+    summary += `<br><br><strong>Please send payment to:</strong><br><strong>Mobile Number:</strong> 0249460223<br><strong>Name:</strong> Musa Frimpong<br><strong>Network:</strong> All Networks<br><br>Thank you for shopping with Shenmo Ghana!`;
+
+    popup.style.display = "block";
+    content.innerHTML = summary;
+  }
+
+  function closePopup() {
+    document.getElementById("order-summary-popup").style.display = "none";
   }
 
   // Handle quantity UI interactions
