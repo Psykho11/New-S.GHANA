@@ -278,7 +278,7 @@
 </div>
 
 <script>
-    const cart = [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartList = document.getElementById('cart-list');
     const totalDisplay = document.getElementById('total');
   
@@ -289,6 +289,7 @@
       } else {
         cart.push({ name, qty, price });
       }
+      saveCart();
       updateCart();
     }
   
@@ -299,24 +300,30 @@
         const itemTotal = item.qty * item.price;
         total += itemTotal;
         const li = document.createElement('li');
-        li.innerHTML = `${item.qty} × ${item.name} — GHS ${itemTotal.toFixed(2)} <button onclick="removeItem(${index})">Remove</button>`;
+        li.innerHTML = `${item.qty} × ${item.name} — GHS ${itemTotal.toFixed(2)} <button onclick="removeItem('${item.name}')">Remove</button>`;
         cartList.appendChild(li);
       });
       totalDisplay.textContent = total.toFixed(2);
-  
-      // ✅ Reset all selections if cart is empty
-      if (cart.length === 0) {
-        document.querySelectorAll('.qty-control').forEach(qtyControl => {
-          qtyControl.style.display = 'none';
-          const qtyDisplay = qtyControl.querySelector('.qty-display');
-          if (qtyDisplay) qtyDisplay.textContent = '1';
-        });
-      }
     }
   
-    function removeItem(index) {
-      cart.splice(index, 1);
-      updateCart();
+    function removeItem(name) {
+      const index = cart.findIndex(item => item.name === name);
+      if (index !== -1) {
+        cart.splice(index, 1);
+        saveCart();
+        updateCart();
+        // Reset the specific product UI
+        document.querySelectorAll('.product-card').forEach(card => {
+          const productName = card.querySelector('h4').textContent;
+          if (productName === name) {
+            const qtyControl = card.querySelector('.qty-control');
+            const qtyDisplay = card.querySelector('.qty-display');
+            if (qtyControl) qtyControl.style.display = 'none';
+            if (qtyDisplay) qtyDisplay.textContent = '1';
+            card.dataset.quantity = '1'; // reset internal quantity tracker
+          }
+        });
+      }
     }
   
     function confirmOrder() {
@@ -344,42 +351,57 @@
       document.getElementById("order-summary-popup").style.display = "none";
     }
   
-    // Handle quantity UI interactions
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+  
+    // Set up product cards
     document.querySelectorAll('.product-card').forEach(card => {
       const btn = card.querySelector('.main-btn');
       const qtyControl = card.querySelector('.qty-control');
       const qtyDisplay = qtyControl?.querySelector('.qty-display');
+      const name = card.querySelector('h4').textContent;
+      const price = parseFloat(card.querySelector('.price').textContent.replace('GHS ', ''));
       let quantity = 1;
   
+      card.dataset.quantity = quantity;
+  
+      // Restore state if in cart
+      const savedItem = cart.find(item => item.name === name);
+      if (savedItem) {
+        qtyControl.style.display = 'flex';
+        qtyDisplay.textContent = savedItem.qty;
+        card.dataset.quantity = savedItem.qty;
+      }
+  
       btn.addEventListener('click', () => {
+        quantity = parseInt(card.dataset.quantity) || 1;
         if (qtyControl) {
           qtyControl.style.display = 'flex';
-          const name = card.querySelector('h4').textContent;
-          const price = parseFloat(card.querySelector('.price').textContent.replace('GHS ', ''));
           addToCart(name, quantity, price);
         }
       });
   
       card.querySelector('.qty-plus')?.addEventListener('click', () => {
+        quantity = parseInt(card.dataset.quantity) || 1;
         quantity++;
+        card.dataset.quantity = quantity;
         qtyDisplay.textContent = quantity;
-        const name = card.querySelector('h4').textContent;
-        const price = parseFloat(card.querySelector('.price').textContent.replace('GHS ', ''));
         updateCartItem(name, quantity, price);
       });
   
       card.querySelector('.qty-minus')?.addEventListener('click', () => {
+        quantity = parseInt(card.dataset.quantity) || 1;
         if (quantity > 1) {
           quantity--;
+          card.dataset.quantity = quantity;
           qtyDisplay.textContent = quantity;
-          const name = card.querySelector('h4').textContent;
-          const price = parseFloat(card.querySelector('.price').textContent.replace('GHS ', ''));
           updateCartItem(name, quantity, price);
         } else {
-          removeItemByName(card.querySelector('h4').textContent);
-          qtyControl.style.display = 'none';
-          quantity = 1;
-          qtyDisplay.textContent = quantity;
+          removeItemByName(name);
+          if (qtyControl) qtyControl.style.display = 'none';
+          qtyDisplay.textContent = '1';
+          card.dataset.quantity = '1';
         }
       });
     });
@@ -389,17 +411,24 @@
       if (index !== -1) {
         cart[index].qty = qty;
         cart[index].price = price;
-        updateCart();
+      } else {
+        cart.push({ name, qty, price });
       }
+      saveCart();
+      updateCart();
     }
   
     function removeItemByName(name) {
       const index = cart.findIndex(item => item.name === name);
       if (index !== -1) {
         cart.splice(index, 1);
+        saveCart();
         updateCart();
       }
     }
+  
+    // Initial render on page load
+    updateCart();
   </script>
   
 <footer>
