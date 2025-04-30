@@ -278,121 +278,130 @@
 </div>
 
 <script>
-  const cart = [];
-  const cartList = document.getElementById('cart-list');
-  const totalDisplay = document.getElementById('total');
-
-  function addToCart(name, qty, price) {
-    const index = cart.findIndex(item => item.name === name);
-    if (index > -1) {
-      cart[index].qty += qty;
-    } else {
-      cart.push({ name, qty, price });
-    }
-    updateCart();
-  }
-
-  function updateCart() {
-    cartList.innerHTML = '';
-    let total = 0;
-    cart.forEach((item, index) => {
-      const itemTotal = item.qty * item.price;
-      total += itemTotal;
-      const li = document.createElement('li');
-      li.innerHTML = `${item.qty} × ${item.name} — GHS ${itemTotal.toFixed(2)} <button onclick="removeItem(${index})">Remove</button>`;
-      cartList.appendChild(li);
-    });
-    totalDisplay.textContent = total.toFixed(2);
-  }
-
-  function removeItem(index) {
-    cart.splice(index, 1);
-    updateCart();
-  }
-
-  function confirmOrder() {
-    const popup = document.getElementById("order-summary-popup");
-    const content = document.getElementById("order-summary-content");
-
-    if (cart.length === 0) {
-      popup.style.display = "block";
-      content.innerHTML = "<strong>Your cart is empty.</strong>";
-      return;
-    }
-
-    let summary = "<strong>Confirm your order:</strong><br><br>";
-    cart.forEach(item => {
-      summary += `${item.qty} × ${item.name} – GHS ${item.qty * item.price}<br>`;
-    });
-    summary += `<br><strong>Total: GHS ${totalDisplay.textContent}</strong>`;
-    summary += `<br><br><strong>Please send payment to:</strong><br><strong>Mobile Number:</strong> 0249460223<br><strong>Name:</strong> Musa Frimpong<br><strong>Network:</strong> All Networks<br><br>Kindly send payment details to WhatsApp Number 0249460223. Thank you for shopping with Shenmo Ghana!`;
-
-    popup.style.display = "block";
-    content.innerHTML = summary;
-  }
-
-  function closePopup() {
-    document.getElementById("order-summary-popup").style.display = "none";
-  }
-
-  // Handle quantity UI interactions
-  document.querySelectorAll('.product-card').forEach(card => {
-    const btn = card.querySelector('.main-btn');
-    const qtyControl = card.querySelector('.qty-control');
-    const qtyDisplay = qtyControl?.querySelector('.qty-display');
-    let quantity = 1;
-
-    btn.addEventListener('click', () => {
-      if (qtyControl) {
-        qtyControl.style.display = 'flex';
-        const name = card.querySelector('h4').textContent;
-        const price = parseFloat(card.querySelector('.price').textContent.replace('GHS ', ''));
-        addToCart(name, quantity, price);
+    const cart = [];
+    const cartList = document.getElementById('cart-list');
+    const totalDisplay = document.getElementById('total');
+  
+    function addToCart(name, qty, price) {
+      const index = cart.findIndex(item => item.name === name);
+      if (index > -1) {
+        cart[index].qty += qty;
+      } else {
+        cart.push({ name, qty, price });
       }
-    });
-
-    card.querySelector('.qty-plus')?.addEventListener('click', () => {
-      quantity++;
-      qtyDisplay.textContent = quantity;
-      const name = card.querySelector('h4').textContent;
-      const price = parseFloat(card.querySelector('.price').textContent.replace('GHS ', ''));
-      updateCartItem(name, quantity, price);
-    });
-
-    card.querySelector('.qty-minus')?.addEventListener('click', () => {
-      if (quantity > 1) {
-        quantity--;
+      updateCart();
+    }
+  
+    function updateCart() {
+      cartList.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        const itemTotal = item.qty * item.price;
+        total += itemTotal;
+        const li = document.createElement('li');
+        li.innerHTML = `${item.qty} × ${item.name} — GHS ${itemTotal.toFixed(2)} <button onclick="removeItem(${index})">Remove</button>`;
+        cartList.appendChild(li);
+      });
+      totalDisplay.textContent = total.toFixed(2);
+  
+      // ✅ Reset all selections if cart is empty
+      if (cart.length === 0) {
+        document.querySelectorAll('.qty-control').forEach(qtyControl => {
+          qtyControl.style.display = 'none';
+          const qtyDisplay = qtyControl.querySelector('.qty-display');
+          if (qtyDisplay) qtyDisplay.textContent = '1';
+        });
+      }
+    }
+  
+    function removeItem(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+  
+    function confirmOrder() {
+      const popup = document.getElementById("order-summary-popup");
+      const content = document.getElementById("order-summary-content");
+  
+      if (cart.length === 0) {
+        popup.style.display = "block";
+        content.innerHTML = "<strong>Your cart is empty.</strong>";
+        return;
+      }
+  
+      let summary = "<strong>Confirm your order:</strong><br><br>";
+      cart.forEach(item => {
+        summary += `${item.qty} × ${item.name} – GHS ${item.qty * item.price}<br>`;
+      });
+      summary += `<br><strong>Total: GHS ${totalDisplay.textContent}</strong>`;
+      summary += `<br><br><strong>Please send payment to:</strong><br><strong>Mobile Number:</strong> 0249460223<br><strong>Name:</strong> Musa Frimpong<br><strong>Network:</strong> All Networks<br><br>Kindly send payment details to WhatsApp Number 0249460223. Thank you for shopping with Shenmo Ghana!`;
+  
+      popup.style.display = "block";
+      content.innerHTML = summary;
+    }
+  
+    function closePopup() {
+      document.getElementById("order-summary-popup").style.display = "none";
+    }
+  
+    // Handle quantity UI interactions
+    document.querySelectorAll('.product-card').forEach(card => {
+      const btn = card.querySelector('.main-btn');
+      const qtyControl = card.querySelector('.qty-control');
+      const qtyDisplay = qtyControl?.querySelector('.qty-display');
+      let quantity = 1;
+  
+      btn.addEventListener('click', () => {
+        if (qtyControl) {
+          qtyControl.style.display = 'flex';
+          const name = card.querySelector('h4').textContent;
+          const price = parseFloat(card.querySelector('.price').textContent.replace('GHS ', ''));
+          addToCart(name, quantity, price);
+        }
+      });
+  
+      card.querySelector('.qty-plus')?.addEventListener('click', () => {
+        quantity++;
         qtyDisplay.textContent = quantity;
         const name = card.querySelector('h4').textContent;
         const price = parseFloat(card.querySelector('.price').textContent.replace('GHS ', ''));
         updateCartItem(name, quantity, price);
-      } else {
-        removeItemByName(card.querySelector('h4').textContent);
-        qtyControl.style.display = 'none';
-        quantity = 1;
-        qtyDisplay.textContent = quantity;
-      }
+      });
+  
+      card.querySelector('.qty-minus')?.addEventListener('click', () => {
+        if (quantity > 1) {
+          quantity--;
+          qtyDisplay.textContent = quantity;
+          const name = card.querySelector('h4').textContent;
+          const price = parseFloat(card.querySelector('.price').textContent.replace('GHS ', ''));
+          updateCartItem(name, quantity, price);
+        } else {
+          removeItemByName(card.querySelector('h4').textContent);
+          qtyControl.style.display = 'none';
+          quantity = 1;
+          qtyDisplay.textContent = quantity;
+        }
+      });
     });
-  });
-
-  function updateCartItem(name, qty, price) {
-    const index = cart.findIndex(item => item.name === name);
-    if (index !== -1) {
-      cart[index].qty = qty;
-      cart[index].price = price;
-      updateCart();
+  
+    function updateCartItem(name, qty, price) {
+      const index = cart.findIndex(item => item.name === name);
+      if (index !== -1) {
+        cart[index].qty = qty;
+        cart[index].price = price;
+        updateCart();
+      }
     }
-  }
-
-  function removeItemByName(name) {
-    const index = cart.findIndex(item => item.name === name);
-    if (index !== -1) {
-      cart.splice(index, 1);
-      updateCart();
+  
+    function removeItemByName(name) {
+      const index = cart.findIndex(item => item.name === name);
+      if (index !== -1) {
+        cart.splice(index, 1);
+        updateCart();
+      }
     }
-  }
-</script>
-
+  </script>
+  
 <footer>
   <div class="footer-container">
     <div class="footer-logo">
