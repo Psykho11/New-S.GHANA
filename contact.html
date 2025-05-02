@@ -47,7 +47,16 @@
 
 <div class="locate-us">LOCATE US</div>
 <div>
-    <iframe class="iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4242.453722788865!2d-0.17445184832570164!3d5.6484167161482185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdfb3120bc63ee9%3A0xa05acfb0e6240d9f!2sAhobrase%20Plaza%2C%20East%20Legon%2C%20Accra%2C%20Ghana!5e0!3m2!1sen!2sgh!4v1682960985059!5m2!1sen!2sgh" allowfullscreen="" title="Map showing Ahobrase Plaza, East Legon, Accra, Ghana"></iframe>
+    <iframe
+  class="map-iframe"
+  width="100%"
+  height="400"
+  frameborder="0"
+  src="https://www.google.com/maps?q=5.659632, -0.142229&hl=en&z=16&output=embed"
+  allowfullscreen
+  title="Ahobrase Plaza, East Legon"
+></iframe>
+  
 </div>
 
 
@@ -153,6 +162,20 @@
   confirmPasswordInput.addEventListener("input", onFormChange);
   firstNameInput.addEventListener("input", onFormChange);
   lastNameInput.addEventListener("input", onFormChange);
+</script>
+
+<script>
+    const location = { lat: 5.659632, lng: -0.142229 };
+const map = new google.maps.Map(document.getElementById("map"), {
+  center: location,
+  zoom: 16,
+});
+new google.maps.Marker({
+  position: location,
+  map: map,
+  title: "Ahobrase Plaza, East Legon",
+});
+
 </script>
 
 <script src="javascript/menu.js"></script>
