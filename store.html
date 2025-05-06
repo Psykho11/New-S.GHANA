@@ -319,158 +319,163 @@
 </div>
 
 <script>
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartList = document.getElementById('cart-list');
-    const totalDisplay = document.getElementById('total');
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartList = document.getElementById('cart-list');
+  const totalDisplay = document.getElementById('total');
   
-    function addToCart(name, qty, price) {
-      const index = cart.findIndex(item => item.name === name);
-      if (index > -1) {
-        cart[index].qty += qty;
-      } else {
-        cart.push({ name, qty, price });
-      }
+  function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+  
+  function updateCart() {
+    cartList.innerHTML = '';
+    let total = 0;
+    cart.forEach(item => {
+      const itemTotal = item.qty * item.price;
+      total += itemTotal;
+      const li = document.createElement('li');
+      li.innerHTML = `${item.qty} × ${item.name} — GHS ${itemTotal.toFixed(2)} <button onclick="removeItem('${item.name}')">Remove</button>`;
+      cartList.appendChild(li);
+    });
+    totalDisplay.textContent = total.toFixed(2);
+  }
+  
+  function addToCart(name, qty, price, card) {
+    const index = cart.findIndex(item => item.name === name);
+    if (index > -1) {
+      cart[index].qty += qty;
+    } else {
+      cart.push({ name, qty, price });
+    }
+    saveCart();
+    updateCart();
+  
+    // UI Changes
+    const qtyControl = card.querySelector('.qty-control');
+    const btn = card.querySelector('.main-btn');
+    qtyControl.style.display = 'flex';
+    btn.style.display = 'none';
+  }
+  
+  function updateCartItem(name, qty, price) {
+    const index = cart.findIndex(item => item.name === name);
+    if (index !== -1) {
+      cart[index].qty = qty;
+      cart[index].price = price;
+    } else {
+      cart.push({ name, qty, price });
+    }
+    saveCart();
+    updateCart();
+  }
+  
+  function removeItem(name) {
+    const index = cart.findIndex(item => item.name === name);
+    if (index !== -1) {
+      cart.splice(index, 1);
       saveCart();
       updateCart();
-    }
   
-    function updateCart() {
-      cartList.innerHTML = '';
-      let total = 0;
-      cart.forEach((item, index) => {
-        const itemTotal = item.qty * item.price;
-        total += itemTotal;
-        const li = document.createElement('li');
-        li.innerHTML = `${item.qty} × ${item.name} — GHS ${itemTotal.toFixed(2)} <button onclick="removeItem('${item.name}')">Remove</button>`;
-        cartList.appendChild(li);
-      });
-      totalDisplay.textContent = total.toFixed(2);
-    }
-  
-    function removeItem(name) {
-      const index = cart.findIndex(item => item.name === name);
-      if (index !== -1) {
-        cart.splice(index, 1);
-        saveCart();
-        updateCart();
-        // Reset the specific product UI
-        document.querySelectorAll('.product-card').forEach(card => {
-          const productName = card.querySelector('h4').textContent;
-          if (productName === name) {
-            const qtyControl = card.querySelector('.qty-control');
-            const qtyDisplay = card.querySelector('.qty-display');
-            if (qtyControl) qtyControl.style.display = 'none';
-            if (qtyDisplay) qtyDisplay.textContent = '1';
-            card.dataset.quantity = '1'; // reset internal quantity tracker
-          }
-        });
-      }
-    }
-  
-    function confirmOrder() {
-      const popup = document.getElementById("order-summary-popup");
-      const content = document.getElementById("order-summary-content");
-  
-      if (cart.length === 0) {
-        popup.style.display = "block";
-        content.innerHTML = "<strong>Your cart is empty.</strong>";
-        return;
-      }
-  
-      let summary = "<strong>Confirm your order:</strong><br><br>";
-      cart.forEach(item => {
-        summary += `${item.qty} × ${item.name} – GHS ${item.qty * item.price}<br>`;
-      });
-      summary += `<br><strong>Total: GHS ${totalDisplay.textContent}</strong>`;
-      summary += `<br><br><strong>Please send payment to:</strong><br><strong>Mobile Number:</strong> 0249460223<br><strong>Name:</strong> Musa Frimpong<br><strong>Network:</strong> All Networks<br><br>Kindly send payment details to WhatsApp Number 0249460223. Thank you for shopping with Shenmo Ghana!`;
-  
-      popup.style.display = "block";
-      content.innerHTML = summary;
-    }
-  
-    function closePopup() {
-      document.getElementById("order-summary-popup").style.display = "none";
-    }
-  
-    function saveCart() {
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }
-  
-    // Set up product cards
-    document.querySelectorAll('.product-card').forEach(card => {
-      const btn = card.querySelector('.main-btn');
-      const qtyControl = card.querySelector('.qty-control');
-      const qtyDisplay = qtyControl?.querySelector('.qty-display');
-      const name = card.querySelector('h4').textContent;
-      const price = parseFloat(card.querySelector('.price').textContent.replace('GHS ', ''));
-      let quantity = 1;
-  
-      card.dataset.quantity = quantity;
-  
-      // Restore state if in cart
-      const savedItem = cart.find(item => item.name === name);
-      if (savedItem) {
-        qtyControl.style.display = 'flex';
-        qtyDisplay.textContent = savedItem.qty;
-        card.dataset.quantity = savedItem.qty;
-      }
-  
-      btn.addEventListener('click', () => {
-        quantity = parseInt(card.dataset.quantity) || 1;
-        if (qtyControl) {
-          qtyControl.style.display = 'flex';
-          addToCart(name, quantity, price);
-        }
-      });
-  
-      card.querySelector('.qty-plus')?.addEventListener('click', () => {
-        quantity = parseInt(card.dataset.quantity) || 1;
-        quantity++;
-        card.dataset.quantity = quantity;
-        qtyDisplay.textContent = quantity;
-        updateCartItem(name, quantity, price);
-      });
-  
-      card.querySelector('.qty-minus')?.addEventListener('click', () => {
-        quantity = parseInt(card.dataset.quantity) || 1;
-        if (quantity > 1) {
-          quantity--;
-          card.dataset.quantity = quantity;
-          qtyDisplay.textContent = quantity;
-          updateCartItem(name, quantity, price);
-        } else {
-          removeItemByName(name);
-          if (qtyControl) qtyControl.style.display = 'none';
+      // Reset UI
+      document.querySelectorAll('.product-card').forEach(card => {
+        const productName = card.querySelector('h4').textContent;
+        if (productName === name) {
+          const qtyControl = card.querySelector('.qty-control');
+          const btn = card.querySelector('.main-btn');
+          const qtyDisplay = card.querySelector('.qty-display');
+          qtyControl.style.display = 'none';
+          btn.style.display = 'block';
           qtyDisplay.textContent = '1';
           card.dataset.quantity = '1';
         }
       });
-    });
+    }
+  }
   
-    function updateCartItem(name, qty, price) {
-      const index = cart.findIndex(item => item.name === name);
-      if (index !== -1) {
-        cart[index].qty = qty;
-        cart[index].price = price;
-      } else {
-        cart.push({ name, qty, price });
-      }
+  function removeItemByName(name) {
+    const index = cart.findIndex(item => item.name === name);
+    if (index !== -1) {
+      cart.splice(index, 1);
       saveCart();
       updateCart();
     }
+  }
   
-    function removeItemByName(name) {
-      const index = cart.findIndex(item => item.name === name);
-      if (index !== -1) {
-        cart.splice(index, 1);
-        saveCart();
-        updateCart();
-      }
+  function confirmOrder() {
+    const popup = document.getElementById("order-summary-popup");
+    const content = document.getElementById("order-summary-content");
+  
+    if (cart.length === 0) {
+      popup.style.display = "block";
+      content.innerHTML = "<strong>Your cart is empty.</strong>";
+      return;
     }
   
-    // Initial render on page load
-    updateCart();
+    let summary = "<strong>Confirm your order:</strong><br><br>";
+    cart.forEach(item => {
+      summary += `${item.qty} × ${item.name} – GHS ${item.qty * item.price}<br>`;
+    });
+    summary += `<br><strong>Total: GHS ${totalDisplay.textContent}</strong>`;
+    summary += `<br><br><strong>Please send payment to:</strong><br><strong>Mobile Number:</strong> 0249460223<br><strong>Name:</strong> Musa Frimpong<br><strong>Network:</strong> All Networks<br><br>Kindly send payment details to WhatsApp Number 0249460223. Thank you for shopping with Shenmo Ghana!`;
+  
+    popup.style.display = "block";
+    content.innerHTML = summary;
+  }
+  
+  function closePopup() {
+    document.getElementById("order-summary-popup").style.display = "none";
+  }
+  
+  // Initialize product cards
+  document.querySelectorAll('.product-card').forEach(card => {
+    const btn = card.querySelector('.main-btn');
+    const qtyControl = card.querySelector('.qty-control');
+    const qtyDisplay = qtyControl.querySelector('.qty-display');
+    const name = card.querySelector('h4').textContent;
+    const price = parseFloat(card.querySelector('.price').textContent.replace('GHS ', ''));
+    let quantity = 1;
+  
+    card.dataset.quantity = quantity;
+  
+    // If already in cart, restore UI
+    const savedItem = cart.find(item => item.name === name);
+    if (savedItem) {
+      qtyControl.style.display = 'flex';
+      qtyDisplay.textContent = savedItem.qty;
+      card.dataset.quantity = savedItem.qty;
+      btn.style.display = 'none';
+    }
+  
+    btn.addEventListener('click', () => {
+      quantity = parseInt(card.dataset.quantity) || 1;
+      addToCart(name, quantity, price, card);
+    });
+  
+    card.querySelector('.qty-plus')?.addEventListener('click', () => {
+      quantity = parseInt(card.dataset.quantity) || 1;
+      quantity++;
+      card.dataset.quantity = quantity;
+      qtyDisplay.textContent = quantity;
+      updateCartItem(name, quantity, price);
+    });
+  
+    card.querySelector('.qty-minus')?.addEventListener('click', () => {
+      quantity = parseInt(card.dataset.quantity) || 1;
+      if (quantity > 1) {
+        quantity--;
+        card.dataset.quantity = quantity;
+        qtyDisplay.textContent = quantity;
+        updateCartItem(name, quantity, price);
+      } else {
+        removeItem(name);
+      }
+    });
+  });
+  
+  // Initial load
+  updateCart();
   </script>
+  
   
 <footer>
   <div class="footer-container">
