@@ -114,25 +114,32 @@
                 window.location.href = `mailto:shenmoghana@gmail.com?subject=Volunteer Application&body=Name: ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0AMessage: ${message}`;
             });
         
-            // Handle Contact Form Submission
-            document.getElementById("contactFormEl").addEventListener("submit", function (event) {
-                event.preventDefault();
-                
-                // Collect Form Data
-                let name = document.getElementById("name").value;
-                let email = document.getElementById("email").value;
-                let subject = document.getElementById("subject").value;
-                let message = document.getElementById("message").value;
-        
-                // Open Email Client
-                window.location.href = `mailto:shenmoghana@gmail.com?subject=${encodeURIComponent(subject)}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
-            });
-        </script>
-        
+           // Handle Contact Form Submission
+document.getElementById("contactFormEl").addEventListener("submit", function (event) {
+    event.preventDefault();
     
+        // Collect Form Data
+        let name = document.getElementById("name").value;
+        let childName = document.getElementById("childName").value;
+        let email = document.getElementById("email").value;
+        let contactNumber = document.getElementById("contactNumber").value;
+        let subject = document.getElementById("subject").value;
+        let message = document.getElementById("message").value;
 
-    
-    
+        // Compose the email body with all fields
+        let emailBody = `
+        Name: ${name}
+        Child's Name: ${childName}
+        Email: ${email}
+        Contact Number: ${contactNumber}
+        Message: ${message}
+            `;
+
+        // Encode and open the default email app
+        window.location.href = `mailto:shenmoghana@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+    });
+
+        </script>
 
 <footer>
     <div class="footer-container">
